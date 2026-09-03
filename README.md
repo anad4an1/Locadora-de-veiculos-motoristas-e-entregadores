@@ -1,6 +1,3 @@
-O ChatGPT disse:
-Claro. Abaixo está somente o conteúdo do README.md, pronto para você copiar e colar no GitHub.
-
 # 🚗 CarLoc
 
 Sistema de locação de carros e motos desenvolvido para atender principalmente **motoristas e entregadores** que necessitam de um veículo para realizar suas atividades profissionais.
