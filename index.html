@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarLoc | Locação para Motoristas e Entregadores</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <!-- Ícones Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Fundo de Partículas Interativas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navegação Superior -->
+    <nav class="navbar">
+      <div class="logo">RENDA SOBRE <span>RODAS</span></div>
+      <ul class="nav-links">
+        <li><a href="#frota">FROTA</a></li>
+        <li><a href="#diferenciais">SERVIÇOS</a></li>
+        <li><a href="#contato" class="btn-nav">SOLICITAR</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <!-- Hero Section -->
+      <header class="hero">
+        <div class="badge">LOCAÇÃO PARA MOTORISTAS & ENTREGADORES</div>
+        <h1 class="glitch-title">COMECE A RODAR</h1>
+        <p class="subtitle">
+          Veículos revisados e prontos para trabalhar na Uber, 99, iFood e entregas. Envie sua proposta e nossa equipe entrará em contato.
+        </p>
+
+        <!-- Card de Busca / Consulta Rápida -->
+        <div class="booking-bar">
+          <div class="input-group">
+            <label>CATEGORIA</label>
+            <select>
+              <option>Todos os Veículos</option>
+              <option>Hatch (Uber/99)</option>
+              <option>Sedan (Comfort/Black)</option>
+              <option>Motos/Utilitários (Entregas)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>PREVISÃO RETIRADA</label>
+            <input type="date" />
+          </div>
+          <div class="input-group">
+            <label>FINALIDADE</label>
+            <select>
+              <option>Passageiros (Uber/99)</option>
+              <option>Entregas (Motos/Furgões)</option>
+            </select>
+          </div>
+          <button class="btn-search">CONSULTAR FROTA</button>
+        </div>
+      </header>
+
+      <!-- GALERIA DE VEÍCULOS -->
+      <section id="frota" class="gallery-section">
+        <div class="section-header">
+          <h2> FROTA PARA TRABALHO</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="grid-gallery">
+          <!-- CARRO 1 -->
+          <div class="card-tilt">
+            <div class="card-inner">
+              <div class="tag-status">DISPONÍVEL</div>
+              <div class="img-wrapper">
+                <img
+                  src="assets/img1.webp"
+                  alt="Byd Dolphin"
+                />
+                <div class="overlay"></div>
+              </div>
+              <div class="card-info">
+                <span class="category">POPULAR / APP</span>
+                <h3>BYD Dolphin</h3>
+                <div class="specs">
+                  <span> Elétrico</span>
+                  <span> Econômico</span>
+                  <span> Uber X / 99</span>
+                </div>
+                <div class="price-box">
+                  <span class="price">R$ 550 <span>/ semana</span></span>
+                  <button class="btn-card">SOLICITAR</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARRO 2 -->
+          <div class="card-tilt">
+            <div class="card-inner">
+              <div class="tag-status">DISPONÍVEL</div>
+              <div class="img-wrapper">
+                <img
+                  src="assets/img2.jpg"
+                  alt="Renault Kwid"
+                />
+                <div class="overlay"></div>
+              </div>
+              <div class="card-info">
+                <span class="category">POPULAR / RENAULT</span>
+                <h3>RENAULT KWID</h3>
+                <div class="specs">
+                  <span> 1.0 flex / elétrico</span>
+                  <span> Porta-malas 290L </span>
+                  <span> UberX / 99</span>
+                </div>
+                <div class="price-box">
+                  <span class="price">R$ 390 <span>/ semana</span></span>
+                  <button class="btn-card">SOLICITAR</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARRO 3 -->
+          <div class="card-tilt">
+            <div class="card-inner">
+              <div class="tag-status red">ALTO GIRO</div>
+              <div class="img-wrapper">
+                <img
+                  src="assets/img3.jpg"
+                  alt="Moto Carga"
+                />
+                <div class="overlay"></div>
+              </div>
+              <div class="card-info">
+                <span class="category">ENTREGAS RÁPIDAS</span>
+                <h3>HONDA CG 160 START</h3>
+                <div class="specs">
+                  <span> 160cc</span>
+                  <span> 40 km/l</span>
+                  <span> iFood / Loggi</span>
+                </div>
+                <div class="price-box">
+                  <span class="price">R$ 220 <span>/ semana</span></span>
+                  <button class="btn-card">SOLICITAR</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARRO 4 -->
+          <div class="card-tilt">
+            <div class="card-inner">
+              <div class="tag-status">POUCAS UNIDADES DISPONÍVEIS</div>
+              <div class="img-wrapper">
+                <img
+                  src="assets/img4.webp"
+                  alt="Haval H6 PHEV19 FLEX"
+                />
+                <div class="overlay"></div>
+              </div>
+              <div class="card-info">
+                <span class="category">BLACK / HAVAL</span>
+                <h3>Haval H6 PHEV19 FLEX</h3>
+                <div class="specs">
+                  <span> 1.5 Turbo</span>
+                  <span> 326 cv</span>
+                  <span> Conforto e segurança</span>
+                </div>
+                <div class="price-box">
+                  <span class="price">R$ 940 <span>/ semana</span></span>
+                  <button class="btn-card">SOLICITAR</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIFERENCIAIS DA LOCADORA -->
+      <section id="diferenciais" class="features-section">
+        <div class="feature-card">
+          <h4> MANUTENÇÃO INCLUSA</h4>
+          <p>
+            Revisões preventivas e desgaste de peças por nossa conta. Você só se preocupa em rodar.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4> SEGURO & ASSISTÊNCIA 24H</h4>
+          <p>
+            Proteção contra roubo, furto e terceiros, além de guincho 24 horas disponível.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>KM APROPRIADO PARA APP</h4>
+          <p>
+            Pacotes de quilometragem planejados sob medida para a rotina intensa de motoristas.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- 1. PROPOSTA DO SERVIÇO -->
+    <section class="info-section">
+      <div class="section-header">
+        <h2> COMO FUNCIONA O PROCESSO</h2>
+        <div class="line"></div>
+      </div>
+      <div class="proposta-grid">
+        <div class="proposta-text">
+          <h3>ANÁLISE RÁPIDA E SEM COMPLICAÇÃO</h3>
+          <p>
+            Nossa plataforma registra seu interesse de forma simples. Você seleciona o veículo ideal para o seu perfil de trabalho, envia seus dados e nossa equipe administrativa realiza a checagem do perfil. O contato e a validação são feitos diretamente com você fora do sistema.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. VANTAGENS -->
+    <section class="info-section">
+      <div class="section-header">
+        <h2> VANTAGENS PARA PARCEIROS</h2>
+        <div class="line"></div>
+      </div>
+      <div class="cards-grid-3">
+        <div class="info-card">
+          <h4> AGILIDADE NA ANÁLISE</h4>
+          <p>
+            Análise cadastral focada em quem precisa trabalhar rápido e sem burocracia excessiva.
+          </p>
+        </div>
+        <div class="info-card">
+          <h4> FROTA REVISADA</h4>
+          <p>
+            Veículos inspecionados rigorosamente para garantir segurança e baixo consumo de combustível.
+          </p>
+        </div>
+        <div class="info-card">
+          <h4>⏱ SUPORTE DEDICADO</h4>
+          <p>
+            Atendimento direcionado para solucionar dúvidas sobre manutenção e sinistros rapidamente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. REQUISITOS -->
+    <section class="info-section">
+      <div class="section-header">
+        <h2> REQUISITOS PARA CADASTRO</h2>
+        <div class="line"></div>
+      </div>
+      <div class="requisitos-box">
+        <ul class="req-list">
+          <li><span>01</span> CNH Válida com EAR (Exerce Atividade Remunerada)</li>
+          <li><span>02</span> Perfil ativo em aplicativo de transporte ou entrega</li>
+          <li><span>03</span> Comprovante de Residência Atualizado</li>
+          <li><span>04</span> Aprovação na Análise Cadastral Interna</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. PLANOS DE LOCAÇÃO -->
+    <section class="info-section">
+      <div class="section-header">
+        <h2>PLANOS DE LOCAÇÃO</h2>
+        <div class="line"></div>
+      </div>
+      <div class="planos-grid">
+        <!-- PLANO 1 -->
+        <div class="plano-card">
+          <h3>PLANO SEMANAL</h3>
+          <div class="plano-price">Renovação Semanal</div>
+          <ul>
+            <li>✓ Veículo Categoria Hatch</li>
+            <li>✓ Manutenção Preventiva inclusa</li>
+            <li>✓ Seguro Proteção Básica</li>
+            <li>✓ Suporte em Horário Comercial</li>
+          </ul>
+          <button class="btn-card">SOLICITAR</button>
+        </div>
+        <!-- PLANO 2 (DESTACADO) -->
+        <div class="plano-card destaque">
+          <div class="badge-plano">MAIS PROCURADO</div>
+          <h3>PLANO MENSAL APP</h3>
+          <div class="plano-price">Contrato Mensal</div>
+          <ul>
+            <li>✓ Veículos Hatch ou Sedan</li>
+            <li>✓ Pacote de KM Expandido</li>
+            <li>✓ Seguro Total com Assistência 24h</li>
+            <li>✓ Carro Reserva em Manutenções Longas</li>
+          </ul>
+          <button class="btn-card active">SOLICITAR</button>
+        </div>
+        <!-- PLANO 3 -->
+        <div class="plano-card">
+          <h3>PLANO ENTREGAS</h3>
+          <div class="plano-price">Motos & Furgões</div>
+          <ul>
+            <li>✓ Frota focada em logística</li>
+            <li>✓ Altíssima economia de combustível</li>
+            <li>✓ Manutenção inclusa</li>
+            <li>✓ Ideal para iFood, Loggi e Mercado Livre</li>
+          </ul>
+          <button class="btn-card">SOLICITAR</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FAQ (PERGUNTAS FREQUENTES) -->
+    <section class="info-section">
+      <div class="section-header">
+        <h2> PERGUNTAS FREQUENTES (FAQ)</h2>
+        <div class="line"></div>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>O pagamento é feito diretamente no site?</h4>
+          <p>
+            Não. O site serve para consulta da frota e envio da solicitação de interesse. A análise, contrato e pagamento são feitos pela equipe administrativa após o contato.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h4>Preciso ter CNH com EAR?</h4>
+          <p>
+            Sim, para motoristas de aplicativos de passageiros (Uber/99) a CNH precisa conter a observação de Exerce Atividade Remunerada (EAR).
+          </p>
+        </div>
+        <div class="faq-item">
+          <h4>Quem é responsável pela manutenção do veículo?</h4>
+          <p>
+            Toda a manutenção preventiva e desgaste natural (pneus, óleo, freios) é de responsabilidade da locadora.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTATO DIRETO / SOLICITAÇÃO -->
+    <section id="contato" class="info-section">
+      <div class="section-header">
+        <h2>SOLICITAR ANÁLISE DE CADASTRO</h2>
+        <div class="line"></div>
+      </div>
+      <div class="contato-container">
+        <form class="contato-form" onsubmit="event.preventDefault()">
+          <div class="input-row">
+            <input type="text" placeholder="NOME COMPLETO" required />
+            <input type="tel" placeholder="TELEFONE / WHATSAPP" required />
+          </div>
+          <div class="input-row">
+            <input type="email" placeholder="SEU E-MAIL" required />
+            <select required>
+              <option value="">SELECIONE A CATEGORIA DESEJADA</option>
+              <option>Hatch Popular (Uber X / 99)</option>
+              <option>BYD (UberX / Popular)</option>
+              <option>Moto para Entregas</option>
+              <option>Black / Haval</option>
+            </select>
+          </div>
+          <textarea
+            rows="4"
+            placeholder="INFORME SEU APLICATIVO PRINCIPAL OU DUVIDAS (EX: UBER, IFOOD, 99)"
+          ></textarea>
+          <button type="submit" class="btn-search">
+            ENVIAR INTERESSE PARA ANÁLISE
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- RODAPÉ & CONTATO VIP -->
+    <footer class="footer">
+      <div class="footer-overlay"></div>
+      <div class="footer-container">
+        <!-- Coluna 1: Logo e Marca -->
+        <div class="footer-col brand-col">
+          <div class="logo">Car<span>Loc</span></div>
+          <p class="footer-desc">
+            Soluções em locação para motoristas de aplicativos e entregadores. O impulso que faltava para a sua fonte de renda.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-btn">INSTAGRAM</a>
+            <a href="#" class="social-btn">YOUTUBE</a>
+            <a href="#" class="social-btn">WHATSAPP</a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Links Rápidos -->
+        <div class="footer-col">
+          <h4>NAVEGAÇÃO</h4>
+          <ul class="footer-links">
+            <li><a href="#frota">FROTA DISPONÍVEL</a></li>
+            <li><a href="#diferenciais">NOSSOS SERVIÇOS</a></li>
+            <li><a href="#">REQUISITOS DE APROVAÇÃO</a></li>
+            <li><a href="#contato">ENVIAR PROPOSTA</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Atendimento e Contato -->
+        <div class="footer-col">
+          <h4>CONTATO VIP</h4>
+          <ul class="footer-info">
+            <li>
+              <i class="fa-solid fa-location-dot contact-icon"></i> Brasília -  Gama
+            </li>
+            <li>
+              <i class="fa-solid fa-phone contact-icon"></i> 0100 150 7300 
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope contact-icon"></i> vip@carloc.com
+            </li>
+            <li>
+              <i class="fa-solid fa-clock contact-icon"></i> Atendimento Privado 24 Horas
+            </li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Newsletter -->
+        <div class="footer-col">
+          <h4>CLUBE EXCLUSIVO</h4>
+          <p class="news-text">
+            Receba novidades sobre novos veículos disponíveis na frota.
+          </p>
+          <form class="footer-form" onsubmit="event.preventDefault()">
+            <input type="email" placeholder="SEU E-MAIL" required />
+            <button type="submit">ENTRAR</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Linha de Direitos Autorais -->
+      <div class="footer-bottom">
+        <p>© 2026 CarLoc Todos os direitos reservados.</p>
+        <div class="legal-links">
+          <a href="#">Termos de Uso</a>
+          <span>|</span>
+          <a href="#">Política de Privacidade</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
