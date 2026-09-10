@@ -121,3 +121,119 @@ cards.forEach(card => {
     card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
   });
 });
+/* =========================================================
+   MODO CLARO / ESCURO
+   ========================================================= */
+
+const themeToggle = document.getElementById('theme-toggle');
+
+if (themeToggle) {
+
+    themeToggle.addEventListener('click', () => {
+
+        document.body.classList.toggle('light-mode');
+
+        if (document.body.classList.contains('light-mode')) {
+            themeToggle.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        } else {
+            themeToggle.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+    // Recupera o tema salvo
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.textContent = '🌙';
+    } else {
+        themeToggle.textContent = '☀️';
+    }
+}
+
+/* =========================================================
+   FORMULÁRIO DE CONTATO -> TELA DE CONFIRMAÇÃO + WHATSAPP
+   ========================================================= */
+
+// Número de WhatsApp da equipe (formato internacional, só dígitos)
+const WHATSAPP_NUMBER = '5561984674175';
+
+const contatoForm = document.getElementById('contato-form');
+const successModal = document.getElementById('success-modal');
+const whatsappLink = document.getElementById('whatsapp-link');
+const modalClose = document.getElementById('modal-close');
+
+if (contatoForm && successModal && whatsappLink) {
+
+  contatoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById('f-nome').value.trim();
+    const telefone = document.getElementById('f-telefone').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const categoria = document.getElementById('f-categoria').value;
+    const mensagem = document.getElementById('f-mensagem').value.trim();
+
+    const texto =
+`Olá! Gostaria de solicitar uma análise de cadastro na CarLoc.
+
+Nome: ${nome}
+Telefone: ${telefone}
+E-mail: ${email}
+Categoria desejada: ${categoria}` +
+      (mensagem ? `\nObservações: ${mensagem}` : '');
+
+    whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+
+    // Mostra a tela de confirmação
+    successModal.classList.add('active');
+    document.body.classList.add('no-scroll');
+
+    contatoForm.reset();
+  });
+
+  function closeSuccessModal() {
+    successModal.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+  }
+
+  modalClose.addEventListener('click', closeSuccessModal);
+
+  // Fecha ao clicar fora da caixa do modal
+  successModal.addEventListener('click', (e) => {
+    if (e.target === successModal) closeSuccessModal();
+  });
+
+  // Fecha com a tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && successModal.classList.contains('active')) {
+      closeSuccessModal();
+    }
+  });
+}
+
+/* =========================================================
+   FILTRO DE CATEGORIA - PÁGINA "FROTA COMPLETA"
+   ========================================================= */
+
+const filterButtons = document.querySelectorAll('.filter-btn');
+const filterCards = document.querySelectorAll('[data-cat]');
+
+if (filterButtons.length && filterCards.length) {
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filtro = btn.dataset.filter;
+
+      filterCards.forEach((card) => {
+        const mostra = filtro === 'all' || card.dataset.cat === filtro;
+        card.style.display = mostra ? '' : 'none';
+      });
+    });
+  });
+}

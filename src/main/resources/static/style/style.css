@@ -1,4 +1,14 @@
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
 /* ==========================================================================
+
    1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (PALETA PRETO, CINZA E CARBONO)
    ========================================================================== */
 :root {
@@ -95,6 +105,12 @@ body {
   list-style: none;
   gap: 30px;
   align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-links a {
@@ -233,10 +249,6 @@ body {
 
 .section-header {
   margin-bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
 .section-header h2 {
@@ -252,7 +264,6 @@ body {
   background: var(--accent);
   margin-top: 10px;
 }
-
 
 .grid-gallery {
   display: grid;
@@ -377,6 +388,12 @@ body {
   font-size: 0.8rem;
   cursor: pointer;
   transition: var(--transition);
+}
+
+a.btn-card {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn-card:hover, .btn-card.active {
@@ -733,5 +750,383 @@ body {
     flex-direction: column;
     text-align: center;
   }
+}
+/* =========================================================
+   MODO CLARO / ESCURO
+   ========================================================= */
 
+body.light-mode {
+    --bg-color: #f4f4f5;
+    --card-bg: rgba(255, 255, 255, 0.95);
+
+    --primary: #111111;
+    --primary-hover: #333333;
+    --accent: #555555;
+    --accent-cyan: #666666;
+
+    --text-main: #111111;
+    --text-muted: #555555;
+
+    --border-color: rgba(0, 0, 0, 0.12);
+    --border-hover: rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   BOTÃO DE TROCAR TEMA
+   ========================================================= */
+
+.theme-toggle {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    border-color: var(--border-hover);
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   AJUSTES DO MODO CLARO
+   ========================================================= */
+
+body.light-mode .navbar {
+    background: rgba(244, 244, 245, 0.95);
+}
+
+body.light-mode .badge {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .glitch-title {
+    color: var(--text-main);
+    text-shadow: none;
+}
+
+body.light-mode .booking-bar {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Campos */
+
+body.light-mode .input-group select,
+body.light-mode .input-group input,
+body.light-mode .contato-form input,
+body.light-mode .contato-form select,
+body.light-mode .contato-form textarea,
+body.light-mode .footer-form input {
+    background: #ffffff;
+    color: #111111;
+}
+
+
+/* Textos */
+
+body.light-mode .price,
+body.light-mode .feature-card h4,
+body.light-mode .info-card h4,
+body.light-mode .footer-col h4 {
+    color: var(--text-main);
+}
+
+
+/* Botões dos carros */
+
+body.light-mode .btn-card {
+    color: var(--text-main);
+}
+
+body.light-mode .btn-card:hover,
+body.light-mode .btn-card.active {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
+
+
+/* Tags */
+
+body.light-mode .tag-status.red {
+    background: #e5e7eb;
+    color: #111111;
+}
+
+
+/* Plano em destaque */
+
+body.light-mode .plano-card.destaque {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Lista */
+
+body.light-mode .req-list span {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-main);
+}
+
+
+/* Rodapé */
+
+body.light-mode .footer {
+    background: #e7e7e9;
+}
+
+body.light-mode .social-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================
+   MODAL DE SUCESSO / REDIRECIONAMENTO WHATSAPP
+   ========================================================= */
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 45px 30px 35px;
+  text-align: center;
+  transform: translateY(25px) scale(0.96);
+  transition: var(--transition);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.modal-overlay.active .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--text-main);
+}
+
+.modal-icon {
+  font-size: 2.6rem;
+  color: #25d366;
+  margin-bottom: 15px;
+}
+
+.modal-box h3 {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.modal-box p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 28px;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #25d366;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  padding: 14px 20px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe57;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp i {
+  font-size: 1.3rem;
+}
+
+body.light-mode .modal-box {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   NAV ATIVO / SUBTÍTULO DE SEÇÃO / BOTÃO "VER MAIS"
+   ========================================================= */
+
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 560px;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.view-all-wrapper {
+  text-align: center;
+  margin-top: 45px;
+}
+
+.btn-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  color: var(--text-main);
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.btn-view-all:hover {
+  background: var(--primary);
+  color: var(--bg-color);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CABEÇALHO DE SUBPÁGINAS (FROTA / PLANOS)
+   ========================================================= */
+
+.page-hero {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 150px 20px 50px;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--text-main);
+  margin-top: 15px;
+}
+
+.page-hero p {
+  max-width: 620px;
+  margin: 18px auto 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   FILTRO DE CATEGORIA (PÁGINA DE FROTA)
+   ========================================================= */
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1280px;
+  margin: 0 auto 45px;
+  padding: 0 20px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-main);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--bg-color);
+  border-color: var(--primary);
+}
+
+/* =========================================================
+   GRADE DE FROTA / PLANOS EM PÁGINA PRÓPRIA
+   ========================================================= */
+
+.page-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
 }
