@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CarLoc | Locação para Motoristas e Entregadores</title>
+    <title>CarLoc | Frota Completa</title>
     <!-- Ícones Font Awesome -->
     <link
       rel="stylesheet"
@@ -1169,10 +1169,10 @@ body.light-mode .modal-box {
       <div class="logo">RENDA SOBRE <span>RODAS</span></div>
       <div class="nav-right">
         <ul class="nav-links">
-          <li><a href="#" class="nav-link active" data-page="inicio">INÍCIO</a></li>
-          <li><a href="frota.html" class="nav-link">FROTA</a></li>
+          <li><a href="index.html" class="nav-link">INÍCIO</a></li>
+          <li><a href="frota.html" class="nav-link active">FROTA</a></li>
           <li><a href="planos.html" class="nav-link">PLANOS</a></li>
-          <li><a href="#" class="nav-link btn-nav" data-page="inicio" data-scroll="contato">SOLICITAR</a></li>
+          <li><a href="index.html#contato" class="nav-link btn-nav">SOLICITAR</a></li>
         </ul>
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar modo claro/escuro">
           ☀️
@@ -1180,391 +1180,377 @@ body.light-mode .modal-box {
       </div>
     </nav>
 
-    <!-- ======================= PÁGINA: INÍCIO ======================= -->
-    <div id="page-inicio" class="page-view active">
-<main class="container">
-      <!-- Hero Section -->
-      <header class="hero">
-        <div class="badge">LOCAÇÃO PARA MOTORISTAS & ENTREGADORES</div>
-        <h1 class="glitch-title">COMECE A RODAR</h1>
-        <p class="subtitle">
-          Veículos revisados e prontos para trabalhar na Uber, 99, iFood e entregas. Envie sua proposta e nossa equipe entrará em contato.
-        </p>
+<header class="page-hero">
+      <div class="badge">FROTA COMPLETA</div>
+      <h1>ESCOLHA SEU VEÍCULO DE TRABALHO</h1>
+      <p>
+        Carros, motos e utilitários revisados e prontos para rodar na Uber, 99, iFood e entregas.
+        Use os filtros abaixo para encontrar a opção ideal para o seu perfil.
+      </p>
+    </header>
 
-        <!-- Card de Busca / Consulta Rápida -->
-        <div class="booking-bar">
-          <div class="input-group">
-            <label>CATEGORIA</label>
-            <select>
-              <option>Todos os Veículos</option>
-              <option>Hatch (Uber/99)</option>
-              <option>Sedan (Comfort/Black)</option>
-              <option>Motos/Utilitários (Entregas)</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label>PREVISÃO RETIRADA</label>
-            <input type="date" />
-          </div>
-          <div class="input-group">
-            <label>FINALIDADE</label>
-            <select>
-              <option>Passageiros (Uber/99)</option>
-              <option>Entregas (Motos/Furgões)</option>
-            </select>
-          </div>
-          <button class="btn-search">CONSULTAR FROTA</button>
-        </div>
-      </header>
+    <!-- FILTROS DE CATEGORIA -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all" type="button">TODOS</button>
+      <button class="filter-btn" data-filter="hatch" type="button">HATCH</button>
+      <button class="filter-btn" data-filter="sedan" type="button">SEDAN</button>
+      <button class="filter-btn" data-filter="moto" type="button">MOTOS</button>
+      <button class="filter-btn" data-filter="black" type="button">BLACK / SUV</button>
+      <button class="filter-btn" data-filter="van" type="button">VAN / ENTREGA</button>
+    </div>
 
-      <!-- GALERIA DE VEÍCULOS -->
-      <section id="frota" class="gallery-section">
-        <div class="section-header">
-          <h2> FROTA PARA TRABALHO</h2>
-          <div class="line"></div>
-        </div>
+    <!-- GRADE COMPLETA DE VEÍCULOS -->
+    <section class="page-section">
+      <div class="grid-gallery">
 
-        <div class="grid-gallery">
-          <!-- CARRO 1 -->
-          <div class="card-tilt">
-            <div class="card-inner">
-              <div class="tag-status">DISPONÍVEL</div>
-              <div class="img-wrapper">
-                <img
-                  src="assets/img1.webp"
-                  alt="Byd Dolphin"
-                />
-                <div class="overlay"></div>
-              </div>
-              <div class="card-info">
-                <span class="category">POPULAR / APP</span>
-                <h3>BYD Dolphin</h3>
-                <div class="specs">
-                  <span> Elétrico</span>
-                  <span> Econômico</span>
-                  <span> Uber X / 99</span>
-                </div>
-                <div class="price-box">
-                  <span class="price">R$ 550 <span>/ semana</span></span>
-                  <button class="btn-card">SOLICITAR</button>
-                </div>
-              </div>
+        <!-- 1. BYD Dolphin -->
+        <div class="card-tilt" data-cat="hatch">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/img1.webp" alt="BYD Dolphin" />
+              <div class="overlay"></div>
             </div>
-          </div>
-
-          <!-- CARRO 2 -->
-          <div class="card-tilt">
-            <div class="card-inner">
-              <div class="tag-status">DISPONÍVEL</div>
-              <div class="img-wrapper">
-                <img
-                  src="assets/img2.jpg"
-                  alt="Renault Kwid"
-                />
-                <div class="overlay"></div>
+            <div class="card-info">
+              <span class="category">POPULAR / APP</span>
+              <h3>BYD Dolphin</h3>
+              <div class="specs">
+                <span> Elétrico</span>
+                <span> Econômico</span>
+                <span> Uber X / 99</span>
               </div>
-              <div class="card-info">
-                <span class="category">POPULAR / RENAULT</span>
-                <h3>RENAULT KWID</h3>
-                <div class="specs">
-                  <span> 1.0 flex / elétrico</span>
-                  <span> Porta-malas 290L </span>
-                  <span> UberX / 99</span>
-                </div>
-                <div class="price-box">
-                  <span class="price">R$ 390 <span>/ semana</span></span>
-                  <button class="btn-card">SOLICITAR</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARRO 3 -->
-          <div class="card-tilt">
-            <div class="card-inner">
-              <div class="tag-status red">ALTO GIRO</div>
-              <div class="img-wrapper">
-                <img
-                  src="assets/img3.jpg"
-                  alt="Moto Carga"
-                />
-                <div class="overlay"></div>
-              </div>
-              <div class="card-info">
-                <span class="category">ENTREGAS RÁPIDAS</span>
-                <h3>HONDA CG 160 START</h3>
-                <div class="specs">
-                  <span> 160cc</span>
-                  <span> 40 km/l</span>
-                  <span> iFood / Loggi</span>
-                </div>
-                <div class="price-box">
-                  <span class="price">R$ 220 <span>/ semana</span></span>
-                  <button class="btn-card">SOLICITAR</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARRO 4 -->
-          <div class="card-tilt">
-            <div class="card-inner">
-              <div class="tag-status">POUCAS UNIDADES DISPONÍVEIS</div>
-              <div class="img-wrapper">
-                <img
-                  src="assets/img4.webp"
-                  alt="Haval H6 PHEV19 FLEX"
-                />
-                <div class="overlay"></div>
-              </div>
-              <div class="card-info">
-                <span class="category">BLACK / HAVAL</span>
-                <h3>Haval H6 PHEV19 FLEX</h3>
-                <div class="specs">
-                  <span> 1.5 Turbo</span>
-                  <span> 326 cv</span>
-                  <span> Conforto e segurança</span>
-                </div>
-                <div class="price-box">
-                  <span class="price">R$ 940 <span>/ semana</span></span>
-                  <button class="btn-card">SOLICITAR</button>
-                </div>
+              <div class="price-box">
+                <span class="price">R$ 550 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="view-all-wrapper">
-          <a href="frota.html" class="btn-view-all">
-            VER FROTA COMPLETA <i class="fa-solid fa-arrow-right"></i>
-          </a>
+        <!-- 2. Renault Kwid -->
+        <div class="card-tilt" data-cat="hatch">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/img2.jpg" alt="Renault Kwid" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">POPULAR / RENAULT</span>
+              <h3>RENAULT KWID</h3>
+              <div class="specs">
+                <span> 1.0 flex / elétrico</span>
+                <span> Porta-malas 290L</span>
+                <span> UberX / 99</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 390 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-      <section id="diferenciais" class="features-section">
-        <div class="feature-card">
-          <h4> MANUTENÇÃO INCLUSA</h4>
-          <p>
-            Revisões preventivas e desgaste de peças por nossa conta. Você só se preocupa em rodar.
-          </p>
-        </div>
-        <div class="feature-card">
-          <h4> SEGURO & ASSISTÊNCIA 24H</h4>
-          <p>
-            Proteção contra roubo, furto e terceiros, além de guincho 24 horas disponível.
-          </p>
-        </div>
-        <div class="feature-card">
-          <h4>KM APROPRIADO PARA APP</h4>
-          <p>
-            Pacotes de quilometragem planejados sob medida para a rotina intensa de motoristas.
-          </p>
-        </div>
-      </section>
-    </main>
 
-    <!-- 1. PROPOSTA DO SERVIÇO -->
-    <section class="info-section">
-      <div class="section-header">
-        <h2> COMO FUNCIONA O PROCESSO</h2>
-        <div class="line"></div>
-      </div>
-      <div class="proposta-grid">
-        <div class="proposta-text">
-          <h3>ANÁLISE RÁPIDA E SEM COMPLICAÇÃO</h3>
-          <p>
-            Nossa plataforma registra seu interesse de forma simples. Você seleciona o veículo ideal para o seu perfil de trabalho, envia seus dados e nossa equipe administrativa realiza a checagem do perfil. O contato e a validação são feitos diretamente com você fora do sistema.
-          </p>
+        <!-- 3. Fiat Mobi -->
+        <div class="card-tilt" data-cat="hatch">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/img5.jpg" alt="Fiat Mobi" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">ECONÔMICO / FIAT</span>
+              <h3>FIAT MOBI LIKE</h3>
+              <div class="specs">
+                <span> 1.0 flex</span>
+                <span> Baixo consumo</span>
+                <span> UberX / 99</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 360 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 2. VANTAGENS -->
-    <section class="info-section">
-      <div class="section-header">
-        <h2> VANTAGENS PARA PARCEIROS</h2>
-        <div class="line"></div>
-      </div>
-      <div class="cards-grid-3">
-        <div class="info-card">
-          <h4> AGILIDADE NA ANÁLISE</h4>
-          <p>
-            Análise cadastral focada em quem precisa trabalhar rápido e sem burocracia excessiva.
-          </p>
+        <!-- 4. Chevrolet Onix Plus -->
+        <div class="card-tilt" data-cat="sedan">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/img6.jpg" alt="Chevrolet Onix Plus" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">COMFORT / CHEVROLET</span>
+              <h3>CHEVROLET ONIX PLUS</h3>
+              <div class="specs">
+                <span> 1.0 Turbo</span>
+                <span> Porta-malas 469L</span>
+                <span> Uber Comfort</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 480 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="info-card">
-          <h4> FROTA REVISADA</h4>
-          <p>
-            Veículos inspecionados rigorosamente para garantir segurança e baixo consumo de combustível.
-          </p>
-        </div>
-        <div class="info-card">
-          <h4>⏱ SUPORTE DEDICADO</h4>
-          <p>
-            Atendimento direcionado para solucionar dúvidas sobre manutenção e sinistros rapidamente.
-          </p>
-        </div>
-      </div>
-    </section>
 
-    <!-- 3. REQUISITOS -->
-    <section id="requisitos" class="info-section">
-        <div class="line"></div>
-      </div>
-      <div class="requisitos-box">
-        <ul class="req-list">
-          <li><span>01</span> CNH Válida com EAR (Exerce Atividade Remunerada)</li>
-          <li><span>02</span> Perfil ativo em aplicativo de transporte ou entrega</li>
-          <li><span>03</span> Comprovante de Residência Atualizado</li>
-          <li><span>04</span> Aprovação na Análise Cadastral Interna</li>
-        </ul>
-      </div>
-    </section>
+        <!-- 5. Hyundai HB20S -->
+        <div class="card-tilt" data-cat="sedan">
+          <div class="card-inner">
+            <div class="tag-status">POUCAS UNIDADES DISPONÍVEIS</div>
+            <div class="img-wrapper">
+              <img src="assets/img7.jpg" alt="Hyundai HB20S" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">COMFORT / HYUNDAI</span>
+              <h3>HYUNDAI HB20S</h3>
+              <div class="specs">
+                <span> 1.0 flex</span>
+                <span> Porta-malas espaçoso</span>
+                <span> Uber Comfort / 99</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 510 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <!-- 4. PLANOS DE LOCAÇÃO -->
-    <section id="planos" class="info-section">
-      <div class="section-header">
-        <h2>PLANOS DE LOCAÇÃO</h2>
-        <div class="line"></div>
-        <p class="section-subtitle">Alguns dos nossos planos mais procurados. Temos opções para todo perfil de trabalho.</p>
-      </div>
-      <div class="planos-grid">
-        <!-- PLANO 1 -->
-        <div class="plano-card">
-          <h3>PLANO SEMANAL</h3>
-          <div class="plano-price">Renovação Semanal</div>
-          <ul>
-            <li>✓ Veículo Categoria Hatch</li>
-            <li>✓ Manutenção Preventiva inclusa</li>
-            <li>✓ Seguro Proteção Básica</li>
-            <li>✓ Suporte em Horário Comercial</li>
-          </ul>
-          <button class="btn-card">SOLICITAR</button>
+        <!-- 6. Honda CG 160 Start -->
+        <div class="card-tilt" data-cat="moto">
+          <div class="card-inner">
+            <div class="tag-status red">ALTO GIRO</div>
+            <div class="img-wrapper">
+              <img src="assets/img3.jpg" alt="Honda CG 160 Start" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">ENTREGAS RÁPIDAS</span>
+              <h3>HONDA CG 160 START</h3>
+              <div class="specs">
+                <span> 160cc</span>
+                <span> 40 km/l</span>
+                <span> iFood / Loggi</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 220 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- PLANO 2 (DESTACADO) -->
-        <div class="plano-card destaque">
-          <div class="badge-plano">MAIS PROCURADO</div>
-          <h3>PLANO MENSAL APP</h3>
-          <div class="plano-price">Contrato Mensal</div>
-          <ul>
-            <li>✓ Veículos Hatch ou Sedan</li>
-            <li>✓ Pacote de KM Expandido</li>
-            <li>✓ Seguro Total com Assistência 24h</li>
-            <li>✓ Carro Reserva em Manutenções Longas</li>
-          </ul>
-          <button class="btn-card active">SOLICITAR</button>
+
+        <!-- 7. Yamaha Factor 125 -->
+        <div class="card-tilt" data-cat="moto">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/img8.jpg" alt="Yamaha Factor 125" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">ENTREGAS / YAMAHA</span>
+              <h3>YAMAHA FACTOR 125</h3>
+              <div class="specs">
+                <span> 125cc</span>
+                <span> Ótimo consumo</span>
+                <span> iFood / Rappi</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 190 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- PLANO 3 -->
-        <div class="plano-card">
-          <h3>PLANO ENTREGAS</h3>
-          <div class="plano-price">Motos & Furgões</div>
-          <ul>
-            <li>✓ Frota focada em logística</li>
-            <li>✓ Altíssima economia de combustível</li>
-            <li>✓ Manutenção inclusa</li>
-            <li>✓ Ideal para iFood, Loggi e Mercado Livre</li>
-          </ul>
-          <button class="btn-card">SOLICITAR</button>
+
+        <!-- 8. Haval H6 PHEV19 FLEX -->
+        <div class="card-tilt" data-cat="black">
+          <div class="card-inner">
+            <div class="tag-status">POUCAS UNIDADES DISPONÍVEIS</div>
+            <div class="img-wrapper">
+              <img src="assets/img4.webp" alt="Haval H6 PHEV19 FLEX" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">BLACK / HAVAL</span>
+              <h3>HAVAL H6 PHEV19 FLEX</h3>
+              <div class="specs">
+                <span> 1.5 Turbo</span>
+                <span> 326 cv</span>
+                <span> Conforto e segurança</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 940 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 9. Toyota Corolla Cross -->
+        <div class="card-tilt" data-cat="black">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/img9.jpg" alt="Toyota Corolla Cross" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">BLACK / TOYOTA</span>
+              <h3>TOYOTA COROLLA CROSS</h3>
+              <div class="specs">
+                <span> Híbrido</span>
+                <span> Alto padrão</span>
+                <span> Uber Black</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 1.050 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. BMW 320i M Sport -->
+        <div class="card-tilt" data-cat="black">
+          <div class="card-inner">
+            <div class="tag-status">POUCAS UNIDADES DISPONÍVEIS</div>
+            <div class="img-wrapper">
+              <img src="assets/pexels-arpan-kabiraj-265552732-29224914.jpg" alt="BMW 320i M Sport" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">BLACK / BMW</span>
+              <h3>BMW 320i M SPORT</h3>
+              <div class="specs">
+                <span> 2.0 Turbo</span>
+                <span> Interior premium</span>
+                <span> Uber Black</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 1.290 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Volkswagen Atlas -->
+        <div class="card-tilt" data-cat="black">
+          <div class="card-inner">
+            <div class="tag-status">POUCAS UNIDADES DISPONÍVEIS</div>
+            <div class="img-wrapper">
+              <img src="assets/pexels-chipi1189-37048035.jpg" alt="Volkswagen Atlas" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">BLACK / VOLKSWAGEN</span>
+              <h3>VOLKSWAGEN ATLAS</h3>
+              <div class="specs">
+                <span> SUV 7 lugares</span>
+                <span> Alto padrão</span>
+                <span> Uber Black / Executivo</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 1.150 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Frota de Motos para Entregadores -->
+        <div class="card-tilt" data-cat="moto">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/sadikali-pm-WAMm32C_lvs-unsplash.jpg" alt="Frota de motos para entregadores" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">ENTREGAS / DIVERSOS MODELOS</span>
+              <h3>FROTA DE MOTOS PARA ENTREGA</h3>
+              <div class="specs">
+                <span> 125cc a 160cc</span>
+                <span> Baú de entrega incluso</span>
+                <span> iFood / Rappi / Loggi</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 210 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Van de Entrega -->
+        <div class="card-tilt" data-cat="van">
+          <div class="card-inner">
+            <div class="tag-status">DISPONÍVEL</div>
+            <div class="img-wrapper">
+              <img src="assets/img_caminhão.jpg" alt="Van de entrega" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">ENTREGAS / UTILITÁRIO</span>
+              <h3>VAN DE ENTREGA</h3>
+              <div class="specs">
+                <span> Amplo espaço de carga</span>
+                <span> Ideal para grandes volumes</span>
+                <span> Transportadoras / E-commerce</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 690 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Genesis G70 -->
+        <div class="card-tilt" data-cat="black">
+          <div class="card-inner">
+            <div class="tag-status">POUCAS UNIDADES DISPONÍVEIS</div>
+            <div class="img-wrapper">
+              <img src="assets/pexels-aleksey-kuprikov-1883853-3786091.jpg" alt="Genesis G70" />
+              <div class="overlay"></div>
+            </div>
+            <div class="card-info">
+              <span class="category">BLACK / GENESIS</span>
+              <h3>GENESIS G70</h3>
+              <div class="specs">
+                <span> Sedan esportivo</span>
+                <span> Acabamento premium</span>
+                <span> Uber Black</span>
+              </div>
+              <div class="price-box">
+                <span class="price">R$ 1.190 <span>/ semana</span></span>
+                <button class="btn-card">SOLICITAR</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="view-all-wrapper">
-        <a href="planos.html" class="btn-view-all">
-          VER TODOS OS PLANOS <i class="fa-solid fa-arrow-right"></i>
+        <a href="index.html#contato" class="btn-view-all">
+          NÃO ENCONTROU O VEÍCULO IDEAL? FALE CONOSCO <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
     </section>
 
-    <!-- 5. FAQ (PERGUNTAS FREQUENTES) -->
-    <section class="info-section">
-      <div class="section-header">
-        <h2> PERGUNTAS FREQUENTES (FAQ)</h2>
-        <div class="line"></div>
-      </div>
-      <div class="faq-grid">
-        <div class="faq-item">
-          <h4>O pagamento é feito diretamente no site?</h4>
-          <p>
-            Não. O site serve para consulta da frota e envio da solicitação de interesse. A análise, contrato e pagamento são feitos pela equipe administrativa após o contato.
-          </p>
-        </div>
-        <div class="faq-item">
-          <h4>Preciso ter CNH com EAR?</h4>
-          <p>
-            Sim, para motoristas de aplicativos de passageiros (Uber/99) a CNH precisa conter a observação de Exerce Atividade Remunerada (EAR).
-          </p>
-        </div>
-        <div class="faq-item">
-          <h4>Quem é responsável pela manutenção do veículo?</h4>
-          <p>
-            Toda a manutenção preventiva e desgaste natural (pneus, óleo, freios) é de responsabilidade da locadora.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. CONTATO DIRETO / SOLICITAÇÃO -->
-    <section id="contato" class="info-section">
-      <div class="section-header">
-        <h2>SOLICITAR ANÁLISE DE CADASTRO</h2>
-        <div class="line"></div>
-      </div>
-      <div class="contato-container">
-        <form class="contato-form" id="contato-form">
-          <div class="input-row">
-              <input type="text" id="f-nome" placeholder="NOME COMPLETO" required />
-              <input type="text" id="f-cpf" placeholder="CPF" required />
-          </div>
-
-          <div class="input-row">
-               <input type="tel" id="f-telefone" placeholder="TELEFONE / WHATSAPP" required />
-          </div>
-          <div class="input-row">
-            <input type="email" id="f-email" placeholder="SEU E-MAIL" required />
-            <select id="f-categoria" required>
-              <option value="">SELECIONE A CATEGORIA DESEJADA</option>
-              <option>Hatch Popular (Uber X / 99)</option>
-              <option>BYD (UberX / Popular)</option>
-              <option>Moto para Entregas</option>
-              <option>Black / Haval</option>
-            </select>
-          </div>
-          <textarea
-            id="f-mensagem"
-            rows="4"
-            placeholder="INFORME SEU APLICATIVO PRINCIPAL OU DUVIDAS (EX: UBER, IFOOD, 99)"
-          ></textarea>
-          <button type="submit" class="btn-search">
-            ENVIAR INTERESSE PARA ANÁLISE
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- MODAL DE CONFIRMAÇÃO / REDIRECIONAMENTO PARA WHATSAPP -->
-    <div id="success-modal" class="modal-overlay">
-      <div class="modal-box">
-        <button class="modal-close" id="modal-close" type="button" aria-label="Fechar">&times;</button>
-        <div class="modal-icon"><i class="fa-solid fa-circle-check"></i></div>
-        <h3>SOLICITAÇÃO ENVIADA!</h3>
-        <p>
-          Recebemos seus dados. Para agilizar sua análise, fale agora mesmo com
-          nossa equipe pelo WhatsApp.
-        </p>
-        <a id="whatsapp-link" href="#" target="_blank" rel="noopener" class="btn-whatsapp">
-          <i class="fa-brands fa-whatsapp"></i> FALAR NO WHATSAPP
-        </a>
-      </div>
-    </div>
-
-    
-    </div>
-
-    <!-- ======================= PÁGINA: FROTA ======================= -->
     
 
-    
-
-    <!-- RODAPÉ & CONTATO VIP -->
+<!-- RODAPÉ & CONTATO VIP -->
     <footer class="footer">
       <div class="footer-overlay"></div>
       <div class="footer-container">
@@ -1585,11 +1571,11 @@ body.light-mode .modal-box {
         <div class="footer-col">
           <h4>NAVEGAÇÃO</h4>
           <ul class="footer-links">
-            <li><a href="#" data-page="inicio">INÍCIO</a></li>
+            <li><a href="index.html">INÍCIO</a></li>
             <li><a href="frota.html">FROTA COMPLETA</a></li>
             <li><a href="planos.html">PLANOS DE LOCAÇÃO</a></li>
-            <li><a href="#" data-page="inicio" data-scroll="requisitos">REQUISITOS DE APROVAÇÃO</a></li>
-            <li><a href="#" data-page="inicio" data-scroll="contato">ENVIAR PROPOSTA</a></li>
+            <li><a href="index.html#requisitos">REQUISITOS DE APROVAÇÃO</a></li>
+            <li><a href="index.html#contato">ENVIAR PROPOSTA</a></li>
           </ul>
         </div>
 
@@ -1738,10 +1724,37 @@ function connect() {
   }
 }
 
-/* EFEITO 3D TILT NOS CARDS */
-const cards = document.querySelectorAll('.card-tilt');
+/* =========================================================
+   FILTRO DE CATEGORIA - FROTA COMPLETA
+   ========================================================= */
 
-cards.forEach(card => {
+const filterButtons = document.querySelectorAll('.filter-btn');
+const filterCards = document.querySelectorAll('[data-cat]');
+
+if (filterButtons.length && filterCards.length) {
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filtro = btn.dataset.filter;
+
+      filterCards.forEach((card) => {
+        const mostra = filtro === 'all' || card.dataset.cat === filtro;
+        card.style.display = mostra ? '' : 'none';
+      });
+    });
+  });
+}
+
+/* =========================================================
+   EFEITO TILT NOS CARDS
+   ========================================================= */
+
+const tiltCards = document.querySelectorAll('.card-tilt');
+
+tiltCards.forEach((card) => {
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -1750,16 +1763,23 @@ cards.forEach(card => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -12;
-    const rotateY = ((x - centerX) / centerX) * 12;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
 
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    const inner = card.querySelector('.card-inner');
+    if (inner) {
+      inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    }
   });
 
   card.addEventListener('mouseleave', () => {
-    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    const inner = card.querySelector('.card-inner');
+    if (inner) {
+      inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    }
   });
 });
+
 /* =========================================================
    MODO CLARO / ESCURO
    ========================================================= */
@@ -1791,162 +1811,6 @@ if (themeToggle) {
         themeToggle.textContent = '☀️';
     }
 }
-
-/* =========================================================
-   FORMULÁRIO DE CONTATO -> TELA DE CONFIRMAÇÃO + WHATSAPP
-   ========================================================= */
-
-// Número de WhatsApp da equipe (formato internacional, só dígitos)
-const WHATSAPP_NUMBER = '5561984674175';
-
-const contatoForm = document.getElementById('contato-form');
-const successModal = document.getElementById('success-modal');
-const whatsappLink = document.getElementById('whatsapp-link');
-const modalClose = document.getElementById('modal-close');
-
-if (contatoForm && successModal && whatsappLink) {
-
-  contatoForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const nome = document.getElementById('f-nome').value.trim();
-    const telefone = document.getElementById('f-telefone').value.trim();
-    const email = document.getElementById('f-email').value.trim();
-    const categoria = document.getElementById('f-categoria').value;
-    const cpf = document.getElementById('f-cpf').value.trim();
-    const mensagem = document.getElementById('f-mensagem').value.trim();
-    console.log('NOME:', nome);
-    console.log('JSON:', JSON.stringify({
-          nome: nome,
-          cpf: cpf,
-          telefone: telefone,
-          email: email
-}));
-    const cliente = {
-  nome: nome,
-  cpf: cpf,
-  telefone: telefone,
-  email: email
-};
-fetch('/clientes', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(cliente)
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao cadastrar cliente');
-    }
-    return response.json();
-  })
-  .then(clienteSalvo => {
-    console.log('Cliente salvo:', clienteSalvo);
-  })
-  .catch(error => {
-    console.error('Erro:', error);
-    alert('Não foi possível salvar o cadastro.');
-  });
-
-  
-    const texto =
-`Olá! Gostaria de solicitar uma análise de cadastro na CarLoc.
-
-Nome: ${nome}
-Telefone: ${telefone}
-E-mail: ${email}
-Categoria desejada: ${categoria}` +
-      (mensagem ? `\nObservações: ${mensagem}` : '');
-
-    whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
-
-    // Mostra a tela de confirmação
-    successModal.classList.add('active');
-    document.body.classList.add('no-scroll');
-
-    contatoForm.reset();
-  });
-
-  function closeSuccessModal() {
-    successModal.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-  }
-
-  modalClose.addEventListener('click', closeSuccessModal);
-
-  // Fecha ao clicar fora da caixa do modal
-  successModal.addEventListener('click', (e) => {
-    if (e.target === successModal) closeSuccessModal();
-  });
-
-  // Fecha com a tecla ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && successModal.classList.contains('active')) {
-      closeSuccessModal();
-    }
-  });
-}
-
-/* =========================================================
-   FILTRO DE CATEGORIA - PÁGINA "FROTA COMPLETA"
-   ========================================================= */
-
-const filterButtons = document.querySelectorAll('.filter-btn');
-const filterCards = document.querySelectorAll('[data-cat]');
-
-if (filterButtons.length && filterCards.length) {
-
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filtro = btn.dataset.filter;
-
-      filterCards.forEach((card) => {
-        const mostra = filtro === 'all' || card.dataset.cat === filtro;
-        card.style.display = mostra ? '' : 'none';
-      });
-    });
-  });
-}
-
-/* =========================================================
-   NAVEGAÇÃO POR ABAS (ARQUIVO ÚNICO) - troca de página sem reload
-   ========================================================= */
-
-const pageViews = document.querySelectorAll('.page-view');
-const pageLinks = document.querySelectorAll('[data-page]');
-
-function showPage(pageId, scrollId) {
-  pageViews.forEach((p) => {
-    p.classList.toggle('active', p.id === 'page-' + pageId);
-  });
-
-  pageLinks.forEach((l) => {
-    if (l.classList.contains('nav-link') && !l.classList.contains('btn-nav')) {
-      l.classList.toggle('active', l.dataset.page === pageId);
-    }
-  });
-
-  if (scrollId) {
-    setTimeout(() => {
-      const el = document.getElementById(scrollId);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 60);
-  } else {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }''
-}
-
-pageLinks.forEach((link) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    showPage(link.dataset.page, link.dataset.scroll);
-  });
-});
-
     </script>
   </body>
 </html>
