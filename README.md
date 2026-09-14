@@ -1,203 +1,168 @@
+<div align="center">
+
 # 🚗 CarLoc
 
-Sistema de locação de carros e motos desenvolvido para atender principalmente **motoristas e entregadores** que necessitam de um veículo para realizar suas atividades profissionais.
+### Locação de carros e motos para quem vive na estrada
+
+*Sistema pensado para motoristas de aplicativo e entregadores que precisam de um veículo para trabalhar*
+
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Java](https://img.shields.io/badge/Java-backend-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-framework-brightgreen)
+![Gradle](https://img.shields.io/badge/Gradle-build-blue)
+
+</div>
 
 ---
 
-## 🎓 Identificação Acadêmica
+## 🎓 Identificação acadêmica
 
 | Informação | Detalhes |
 |---|---|
-| **Instituição de Ensino** | UNICEPLAC |
+| **Instituição** | UNICEPLAC |
 | **Curso** | Análise e Desenvolvimento de Sistemas |
-| **Disciplina** | A ser definido pela equipe |
+| **Disciplina** | A definir pela equipe |
 | **Orientador** | Profº Hudson Neves |
-| **Nome do Projeto** | CarLoc |
-| **Status** | Em desenvolvimento |
+| **Projeto** | CarLoc |
+| **Status** | 🟡 Em desenvolvimento |
 
 ---
 
-## 📋 Descrição do Projeto
+## 📋 Descrição do projeto
 
-O **CarLoc** é um sistema desenvolvido para funcionar como uma plataforma de **locação de carros e motos**, voltada principalmente para motoristas e entregadores.
+O **CarLoc** funciona como uma locadora digital de carros e motos, pensada para quem depende de um veículo para trabalhar — motoristas de aplicativo, entregadores e profissionais do transporte.
 
-A proposta do projeto é oferecer uma solução semelhante a uma locadora de veículos, permitindo que pessoas que precisam de um carro ou uma moto para trabalhar possam consultar os veículos disponíveis e realizar uma locação.
-
-O sistema busca facilitar o acesso a veículos para profissionais que trabalham com transporte de passageiros, entregas e outras atividades que dependem de um veículo.
+A proposta é simples: o usuário consulta os veículos disponíveis e realiza a locação direto pela plataforma, sem burocracia de locadora tradicional.
 
 ---
 
 ## 🎯 Objetivos
 
-### Objetivo Geral
+**Objetivo geral**
+Desenvolver uma aplicação web de locação de carros e motos que dê a motoristas e entregadores uma forma prática de encontrar e alugar veículos para uso profissional.
 
-Desenvolver uma aplicação web para **locação de carros e motos**, proporcionando aos motoristas e entregadores uma maneira prática de encontrar e alugar veículos para utilização profissional.
+**Problema que o sistema resolve**
+Muitos motoristas e entregadores precisam de um veículo para trabalhar, mas não têm carro ou moto próprios. O CarLoc centraliza a busca e a locação desses veículos em um só lugar.
 
-### Problema que o Sistema Resolve
-
-Muitos motoristas e entregadores precisam de um veículo para trabalhar, mas não possuem carro ou moto própria.
-
-O **CarLoc** busca facilitar o acesso desses profissionais a veículos disponíveis para locação, centralizando o processo em uma aplicação web.
-
-### Público-Alvo
-
-O sistema é destinado principalmente para:
-
-- Motoristas de aplicativos;
-- Entregadores;
-- Profissionais que utilizam veículos para trabalho;
-- Pessoas que necessitam alugar carros ou motos.
+**Público-alvo**
+- Motoristas de aplicativo
+- Entregadores
+- Profissionais que dependem de veículo para trabalhar
+- Pessoas em busca de locação de carros ou motos
 
 ---
 
 ## ⚙️ Funcionalidades
 
-As principais funcionalidades propostas para o sistema são:
-
-- Consulta de veículos disponíveis;
-- Locação de carros;
-- Locação de motos;
-- Cadastro e gerenciamento de veículos;
-- Gerenciamento das locações;
-- Interface web para interação com o sistema.
+- 🔍 Consulta de veículos disponíveis
+- 🚗 Locação de carros
+- 🏍️ Locação de motos
+- 📋 Cadastro e gerenciamento de veículos
+- 📑 Gerenciamento das locações
+- 🌐 Interface web para interação com o sistema
 
 > Novas funcionalidades poderão ser adicionadas conforme o desenvolvimento do projeto.
 
 ---
 
-## 💻 Tecnologias Utilizadas
+## 💻 Tecnologias utilizadas
 
-O projeto utiliza tecnologias para desenvolvimento do frontend e backend.
-
-| Tecnologia | Utilização |
-|---|---|
-| **HTML5** | Estrutura das páginas web |
-| **CSS3** | Estilização e layout da aplicação |
-| **JavaScript** | Interatividade e funcionalidades do frontend |
-| **Java** | Linguagem utilizada no backend |
-| **Spring Boot** | Desenvolvimento do backend |
-| **Gradle** | Gerenciamento e construção do projeto |
-
-### Frontend
-
-O frontend do CarLoc utiliza:
-
-- HTML5;
-- CSS3;
-- JavaScript.
-
-### Backend
-
-O backend é desenvolvido utilizando:
-
-- Java;
-- Spring Boot.
-
-### Gerenciamento do Projeto
-
-O projeto utiliza o **Gradle** para gerenciamento de dependências e construção da aplicação.
+| Camada | Tecnologia | Uso |
+|---|---|---|
+| **Frontend** | HTML5 · CSS3 · JavaScript | Estrutura, estilo e interatividade das páginas |
+| **Backend** | Java · Spring Boot | Regras de negócio e API |
+| **Build** | Gradle | Gerenciamento de dependências e construção do projeto |
 
 ---
 
-## 🏗️ Arquitetura da Solução
+## 🏗️ Arquitetura da solução
 
-O sistema CarLoc possui uma estrutura dividida entre **frontend** e **backend**.
-
-```text
+```
                     ┌─────────────────┐
                     │     USUÁRIO     │
                     └────────┬────────┘
-                             │
                              ▼
                   ┌─────────────────────┐
                   │      FRONTEND       │
                   │   HTML + CSS + JS   │
                   └──────────┬──────────┘
-                             │
                              ▼
                   ┌─────────────────────┐
                   │       BACKEND       │
-                  │     Spring Boot     │
-                  │        + Java       │
+                  │  Spring Boot + Java │
                   └──────────┬──────────┘
-                             │
                              ▼
                   ┌─────────────────────┐
                   │    BANCO DE DADOS   │
                   └─────────────────────┘
+```
 
-Frontend
-Responsável pela interface visual e pela interação do usuário com o sistema.
+- **Frontend** → interface visual e interação do usuário
+- **Backend** → lógica de negócio, processamento e comunicação com o banco de dados
 
-Backend
-Responsável pela lógica de negócio, processamento das informações e comunicação com o banco de dados.
+---
 
-🗄️ Banco de Dados
-Banco de dados utilizado: A ser definido pela equipe.
+## 🗄️ Banco de dados
 
-A modelagem do banco deverá contemplar as principais informações necessárias para o funcionamento do sistema, como:
+**SGBD:** a ser definido pela equipe
 
-Usuários;
-Veículos;
-Carros;
-Motos;
-Locações.
-Diagrama do Banco de Dados
-Inserir aqui o Diagrama Entidade-Relacionamento (DER) do projeto.
+A modelagem deverá contemplar as principais entidades do sistema:
 
-[ INSERIR IMAGEM DO DIAGRAMA DO BANCO DE DADOS AQUI ]
+- Usuários
+- Veículos
+- Carros
+- Motos
+- Locações
 
-📦 Pré-requisitos
-Para executar o projeto, é necessário possuir:
+**Diagrama Entidade-Relacionamento (DER)**
+📌 *Inserir aqui o diagrama do banco de dados.*
 
-Java;
-Gradle;
-Spring Boot;
-Git;
-Navegador web.
-A versão específica do Java e demais ferramentas será definida conforme a configuração final do projeto.
+---
 
-📥 Instalação
-1. Clonar o repositório
+## 📦 Pré-requisitos
+
+- ☕ Java
+- 🐘 Gradle
+- 🍃 Spring Boot
+- 🔧 Git
+- 🌐 Navegador web
+
+> As versões específicas serão definidas conforme a configuração final do projeto.
+
+---
+
+## 📥 Instalação
+
+```bash
+# 1. Clonar o repositório
 git clone https://github.com/anad4an1/Locadora-de-veiculos-motoristas-e-entregadores.git
 
-2. Acessar a pasta do projeto
+# 2. Acessar a pasta do projeto
 cd Locadora-de-veiculos-motoristas-e-entregadores
+```
 
-3. Verificar os arquivos do projeto
-O projeto possui configuração utilizando Gradle e conta com o Gradle Wrapper.
+O projeto usa Gradle com Gradle Wrapper. Arquivos principais: `build.gradle`, `settings.gradle`, `gradlew`, `gradlew.bat`.
 
-Arquivos principais relacionados ao Gradle:
+---
 
-build.gradle
-settings.gradle
-gradlew
-gradlew.bat
+## ▶️ Como executar
 
-▶️ Como Executar
-Windows
-No Windows, execute:
-
+**Windows**
+```bash
 gradlew.bat bootRun
+```
 
-Linux ou macOS
-No Linux ou macOS, execute:
-
-./gradlew bootRun
-
-Caso seja necessário conceder permissão de execução:
-
+**Linux / macOS**
+```bash
 chmod +x gradlew
-
-Depois execute:
-
 ./gradlew bootRun
+```
 
-A aplicação será iniciada de acordo com as configurações definidas no projeto.
+---
 
-📁 Estrutura do Projeto
-A estrutura principal do projeto está organizada da seguinte forma:
+## 📁 Estrutura do projeto
 
+```
 Locadora-de-veiculos-motoristas-e-entregadores/
 │
 ├── gradle/
@@ -212,97 +177,92 @@ Locadora-de-veiculos-motoristas-e-entregadores/
 ├── gradlew.bat
 ├── settings.gradle
 └── README.md
+```
 
-🧪 Exemplos de Uso
-🚗 Aluguel de carro para motorista
-Um motorista que precisa de um carro para trabalhar poderá acessar o CarLoc, consultar os carros disponíveis e realizar uma locação.
+---
 
-Acessar o CarLoc
-       ↓
-Consultar veículos disponíveis
-       ↓
-Selecionar um carro
-       ↓
-Realizar a locação
-       ↓
-Utilizar o veículo para trabalhar
+## 🧪 Exemplos de uso
 
-🏍️ Aluguel de moto para entregador
-Um entregador que precisa de uma moto para realizar suas entregas poderá acessar o sistema, consultar as motos disponíveis e realizar uma locação.
+**🚗 Motorista alugando um carro**
+`Acessar o CarLoc → Consultar veículos disponíveis → Selecionar um carro → Realizar a locação → Utilizar o veículo para trabalhar`
 
-Acessar o CarLoc
-       ↓
-Consultar motos disponíveis
-       ↓
-Selecionar uma moto
-       ↓
-Realizar a locação
-       ↓
-Utilizar a moto para realizar entregas
+**🏍️ Entregador alugando uma moto**
+`Acessar o CarLoc → Consultar motos disponíveis → Selecionar uma moto → Realizar a locação → Utilizar a moto para realizar entregas`
 
-🔌 API
-O backend do CarLoc é desenvolvido utilizando Spring Boot.
+---
 
-A API será responsável pela comunicação entre o frontend e o backend do sistema.
+## 🔌 API
 
-Documentação da API: A ser definido pela equipe.
+Backend desenvolvido com Spring Boot, responsável pela comunicação entre frontend e backend.
 
-Endpoints
-Método	Endpoint	Descrição
-GET	/veiculos	Consultar veículos
-GET	/veiculos/{id}	Consultar veículo específico
-POST	/locacoes	Realizar uma locação
-GET	/locacoes	Consultar locações
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `GET` | `/veiculos` | Consultar veículos |
+| `GET` | `/veiculos/{id}` | Consultar veículo específico |
+| `POST` | `/locacoes` | Realizar uma locação |
+| `GET` | `/locacoes` | Consultar locações |
 
-Os endpoints deverão ser atualizados conforme a implementação definitiva da API.
+> Documentação completa da API a ser definida pela equipe.
 
-🖼️ Capturas de Tela
-Página Inicial
-Adicionar aqui uma imagem da página inicial do sistema.
+---
 
-[ INSERIR CAPTURA DE TELA DA PÁGINA INICIAL AQUI ]
+## 🖼️ Capturas de tela
 
-Página de Veículos
-Adicionar aqui uma imagem da tela de consulta dos veículos.
+**Página inicial**
+📌 *Inserir captura de tela da página inicial aqui.*
 
-[ INSERIR CAPTURA DE TELA DA PÁGINA DE VEÍCULOS AQUI ]
+**Página de veículos**
+📌 *Inserir captura de tela da página de veículos aqui.*
 
-Página de Locação
-Adicionar aqui uma imagem da tela de locação.
+**Página de locação**
+📌 *Inserir captura de tela da página de locação aqui.*
 
-[ INSERIR CAPTURA DE TELA DA PÁGINA DE LOCAÇÃO AQUI ]
+---
 
-👥 Equipe do Projeto
-Integrante	Função
-A ser definido pela equipe	A ser definido pela equipe
-A ser definido pela equipe	A ser definido pela equipe
-A ser definido pela equipe	A ser definido pela equipe
-A ser definido pela equipe	A ser definido pela equipe
+## 👥 Equipe do projeto
 
-🚀 Melhorias Futuras
-As melhorias futuras serão definidas pela equipe conforme a evolução do projeto.
+| Integrante | Função |
+|---|---|
+| Lucas Emanuel Carvalho Lazo | Testes e Qualidade (QA) |
+| Fábio Dutra dos Santos | Documentação e Requisitos |
+| Igor Fernando Roque Gonçalves | UI/UX Design (protótipos, layout das telas) |
+| Rebeca Evellyn Sousa Farias | Documentação e Requisitos |
+| Thiago Gabriel Braga dos Santos | Líder de Projeto / Scrum Master |
+| Guilherme Moreira Sant'Ana | Desenvolvedor Full Stack |
+| Vitória da Silva de Jesus | Desenvolvedor Frontend (HTML/CSS/JS) |
 
-A ser definido pela equipe;
-A ser definido pela equipe;
-A ser definido pela equipe.
-📊 Status do Projeto
-🟡 Em desenvolvimento
+---
 
-O projeto CarLoc encontra-se em fase de desenvolvimento como projeto acadêmico do curso de Análise e Desenvolvimento de Sistemas da UNICEPLAC.
+## 🚀 Melhorias futuras
 
-📄 Licença
-Licença: A ser definido pela equipe.
+📌 *A ser definido pela equipe conforme a evolução do projeto.*
 
-👨‍💻 Considerações Finais
-O CarLoc tem como objetivo oferecer uma solução digital para locação de carros e motos, com foco principalmente em motoristas e entregadores que necessitam de veículos para exercer suas atividades profissionais.
+---
 
-A aplicação utiliza HTML, CSS e JavaScript no desenvolvimento do frontend e Java com Spring Boot no desenvolvimento do backend, utilizando Gradle para gerenciamento e construção do projeto.
+## 📊 Status do projeto
 
-O projeto é desenvolvido no contexto acadêmico do curso de Análise e Desenvolvimento de Sistemas da UNICEPLAC, sob orientação do Profº Hudson Neves.
+🟡 **Em desenvolvimento** — projeto acadêmico do curso de Análise e Desenvolvimento de Sistemas da UNICEPLAC.
 
-🔗 Repositório
-O código-fonte do projeto está disponível no GitHub:
+---
 
-CarLoc — Locadora de Veículos para Motoristas e Entregadores
+## 📄 Licença
 
-https://github.com/anad4an1/Locadora-de-veiculos-motoristas-e-entregadores
+A ser definida pela equipe.
+
+---
+
+## 👨‍💻 Considerações finais
+
+O CarLoc nasce com um propósito claro: dar a motoristas e entregadores uma forma simples e digital de encontrar o veículo que precisam para trabalhar.
+
+Construído com HTML, CSS e JavaScript no frontend e Java com Spring Boot no backend, o projeto é desenvolvido no contexto acadêmico do curso de Análise e Desenvolvimento de Sistemas da UNICEPLAC, sob orientação do Profº Hudson Neves.
+
+---
+
+<div align="center">
+
+### 🔗 Repositório
+
+[github.com/anad4an1/Locadora-de-veiculos-motoristas-e-entregadores](https://github.com/anad4an1/Locadora-de-veiculos-motoristas-e-entregadores)
+
+</div>
