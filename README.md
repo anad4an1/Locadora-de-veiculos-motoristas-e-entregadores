@@ -229,7 +229,7 @@ Backend desenvolvido com Spring Boot, responsável pela comunicação entre fron
 | Rebeca Evellyn Sousa Farias | Documentação e Requisitos |
 | Thiago Gabriel Braga dos Santos | Líder de Projeto / Scrum Master |
 | Guilherme Moreira Sant'Ana | Desenvolvedor Full Stack |
-| Vitória da Silva de Jesus | Desenvolvedor Frontend (HTML/CSS/JS) |
+| Vitoria Silva de Jesus Parotivo | Desenvolvedora Frontend (HTML/CSS/JS) |
 
 ---
 
