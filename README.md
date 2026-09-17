@@ -230,6 +230,7 @@ Backend desenvolvido com Spring Boot, responsável pela comunicação entre fron
 | Thiago Gabriel Braga dos Santos | Líder de Projeto / Scrum Master |
 | Guilherme Moreira Sant'Ana | Desenvolvedor Full Stack |
 | Vitoria Silva de Jesus Parotivo | Desenvolvedora Frontend (HTML/CSS/JS) |
+| Leandro Luiz Gonçalves | Desenvolvedor Full stack |
 
 ---
 
