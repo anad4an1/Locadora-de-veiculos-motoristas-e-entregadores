@@ -7,30 +7,30 @@
     pointer-events: none;
     z-index: -1;
 }
-/* ==========================================================================
 
-   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (PALETA PRETO, CINZA E CARBONO)
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (MODO CLARO EXCLUSIVO)
    ========================================================================== */
 :root {
-  --bg-color: #08080a;          /* Preto Profundo */
-  --card-bg: rgba(18, 18, 22, 0.9); /* Grafite Escuro Translucido */
+  --bg-color: #f8fafc;          /* Off-white / Cinza claro suave */
+  --card-bg: #ffffff;           /* Fundo dos cards branco */
   
-  /* PALETA MONOCROMÁTICA */
-  --primary: #ffffff;           /* Branco Puro (Destaques) */
-  --primary-hover: #d1d5db;     /* Cinza Claro (Hover) */
-  --accent: #8e95a2;            /* Cinza Aço / Prata */
-  --accent-cyan: #d1d5db;       /* Suporte Monocromático */
+  /* PALETA PRINCIPAL */
+  --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); /* Azul elegante (não muito claro) para o Hero */
+  --primary: #1e40af;           /* Azul Royal / Marinho para botões e destaques */
+  --primary-hover: #1e3a8a;     /* Azul Escuro para Hover */
+  --accent: #3b82f6;            /* Azul Vibrante para pequenos detalhes */
   
-  --text-main: #f3f4f6;         /* Branco Acinzentado */
-  --text-muted: #808896;        /* Cinza Médio */
+  --text-main: #0f172a;         /* Azul/Grafite Escuro para leitura perfeita */
+  --text-muted: #475569;        /* Cinza Médio */
   
   /* BORDAS E SOMBRAS */
-  --border-color: rgba(255, 255, 255, 0.12);
-  --border-hover: rgba(255, 255, 255, 0.4);
+  --border-color: #e2e8f0;      /* Borda cinza suave */
+  --border-hover: #cbd5e1;      /* Borda no hover */
   
   --font-title: 'Orbitron', sans-serif;
   --font-body: 'Rajdhani', sans-serif;
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 * {
@@ -53,17 +53,6 @@ body {
   position: relative;
 }
 
-/* Fundo de Partículas / Canvas */
-#bg-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -82,7 +71,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: rgba(8, 8, 10, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
@@ -97,7 +86,7 @@ body {
 }
 
 .logo span {
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .nav-links {
@@ -121,39 +110,44 @@ body {
   transition: var(--transition);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--primary);
 }
 
 .btn-nav {
   padding: 8px 20px;
-  border: 1px solid var(--border-hover);
+  border: 1px solid var(--primary);
   border-radius: 4px;
-  color: var(--text-main) !important;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--primary);
+  background: transparent;
+  font-weight: 600;
 }
 
 .btn-nav:hover {
   background: var(--primary);
-  color: #000 !important;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
 }
 
 /* ==========================================================================
-   3. HERO SECTION
+   3. HERO SECTION (TOPO AZUL)
    ========================================================================== */
 .hero {
-  padding-top: 150px;
-  padding-bottom: 60px;
+  background: var(--hero-bg);   /* Fundo Azul no topo */
+  padding-top: 170px;
+  padding-bottom: 80px;
   text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
 }
 
 .badge {
   display: inline-block;
   padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-hover);
-  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
   font-family: var(--font-title);
   font-size: 0.85rem;
   border-radius: 20px;
@@ -167,14 +161,14 @@ body {
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: 3px;
-  color: #fff;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  color: #ffffff;               /* Texto do título em Branco no topo azul */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .subtitle {
   max-width: 650px;
   margin: 20px auto 40px;
-  color: var(--text-muted);
+  color: #e2e8f0;               /* Subtítulo em tom claro legível */
   font-size: 1.2rem;
 }
 
@@ -187,7 +181,7 @@ body {
   padding: 25px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .input-group {
@@ -199,16 +193,17 @@ body {
 .input-group label {
   font-family: var(--font-title);
   font-size: 0.75rem;
-  color: var(--accent);
+  color: var(--primary);
   margin-bottom: 8px;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .input-group select,
 .input-group input {
-  background: rgba(0, 0, 0, 0.6);
+  background: #ffffff;
   border: 1px solid var(--border-color);
-  color: #fff;
+  color: var(--text-main);
   padding: 12px;
   border-radius: 4px;
   font-family: var(--font-body);
@@ -218,12 +213,12 @@ body {
 
 .input-group select:focus,
 .input-group input:focus {
-  border-color: var(--border-hover);
+  border-color: var(--primary);
 }
 
 .btn-search {
   background: var(--primary);
-  color: #000;
+  color: #ffffff;
   border: none;
   font-family: var(--font-title);
   font-weight: 700;
@@ -236,7 +231,7 @@ body {
 
 .btn-search:hover {
   background: var(--primary-hover);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
   transform: translateY(-2px);
 }
 
@@ -261,7 +256,7 @@ body {
 .section-header .line {
   width: 60px;
   height: 4px;
-  background: var(--accent);
+  background: var(--primary);
   margin-top: 10px;
 }
 
@@ -278,20 +273,21 @@ body {
   overflow: hidden;
   transition: var(--transition);
   position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
 }
 
 .card-tilt:hover {
   border-color: var(--border-hover);
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .tag-status {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #ffffff;
-  color: #000;
+  background: var(--primary);
+  color: #ffffff;
   font-family: var(--font-title);
   font-size: 0.7rem;
   font-weight: 700;
@@ -301,9 +297,9 @@ body {
 }
 
 .tag-status.red {
-  background: #3a3f47;
-  color: #fff;
-  border: 1px solid var(--border-hover);
+  background: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
 }
 
 .img-wrapper {
@@ -311,13 +307,8 @@ body {
   width: 100%;
   height: 218px;
   overflow: hidden;
-  filter: grayscale(20%);
   transition: var(--transition);
   background-size: cover;
-}
-
-.card-tilt:hover .img-wrapper {
-  filter: grayscale(0%);
 }
 
 .img-wrapper img {
@@ -337,7 +328,7 @@ body {
 
 .category {
   font-size: 0.8rem;
-  color: var(--accent);
+  color: var(--primary);
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -346,6 +337,7 @@ body {
   font-family: var(--font-title);
   font-size: 1.3rem;
   margin: 5px 0 15px;
+  color: var(--text-main);
 }
 
 .specs {
@@ -361,14 +353,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-color);
   padding-top: 15px;
 }
 
 .price {
   font-family: var(--font-title);
   font-size: 1.3rem;
-  color: #fff;
+  color: var(--text-main);
   font-weight: 700;
 }
 
@@ -380,8 +372,8 @@ body {
 
 .btn-card {
   background: transparent;
-  border: 1px solid var(--border-hover);
-  color: #fff;
+  border: 1px solid var(--primary);
+  color: var(--primary);
   padding: 8px 16px;
   border-radius: 4px;
   font-family: var(--font-title);
@@ -397,9 +389,8 @@ a.btn-card {
 }
 
 .btn-card:hover, .btn-card.active {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
+  background: var(--primary);
+  color: #ffffff;
 }
 
 /* ==========================================================================
@@ -417,11 +408,12 @@ a.btn-card {
   padding: 30px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
 .feature-card h4, .info-card h4 {
   font-family: var(--font-title);
-  color: #fff;
+  color: var(--text-main);
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
@@ -430,7 +422,8 @@ a.btn-card {
   background: var(--card-bg);
   padding: 35px;
   border-radius: 8px;
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
 .cards-grid-3 {
@@ -463,11 +456,11 @@ a.btn-card {
 .req-list span {
   font-family: var(--font-title);
   font-size: 1.2rem;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--primary);
+  background: rgba(30, 64, 175, 0.08);
   padding: 5px 12px;
   border-radius: 4px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(30, 64, 175, 0.15);
 }
 
 /* PLANOS DE LOCAÇÃO */
@@ -488,8 +481,8 @@ a.btn-card {
 }
 
 .plano-card.destaque {
-  border-color: var(--border-hover);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  box-shadow: 0 8px 30px rgba(30, 64, 175, 0.12);
 }
 
 .badge-plano {
@@ -497,8 +490,8 @@ a.btn-card {
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: #fff;
-  color: #000;
+  background: var(--primary);
+  color: #ffffff;
   font-family: var(--font-title);
   font-size: 0.75rem;
   font-weight: 700;
@@ -509,10 +502,11 @@ a.btn-card {
 .plano-card h3 {
   font-family: var(--font-title);
   margin-bottom: 5px;
+  color: var(--text-main);
 }
 
 .plano-price {
-  color: var(--accent);
+  color: var(--primary);
   font-weight: 700;
   margin-bottom: 20px;
 }
@@ -576,9 +570,9 @@ a.btn-card {
 .contato-form input,
 .contato-form select,
 .contato-form textarea {
-  background: rgba(0, 0, 0, 0.6);
+  background: #ffffff;
   border: 1px solid var(--border-color);
-  color: #fff;
+  color: var(--text-main);
   padding: 15px;
   border-radius: 4px;
   font-family: var(--font-body);
@@ -589,14 +583,15 @@ a.btn-card {
 .contato-form input:focus,
 .contato-form select:focus,
 .contato-form textarea:focus {
-  border-color: var(--border-hover);
+  border-color: var(--primary);
 }
 
 /* ==========================================================================
    6. RODAPÉ (FOOTER)
    ========================================================================== */
 .footer {
-  background: #040405;
+  background: #0f172a;          /* Fundo escuro/azul marinho no rodapé */
+  color: #f8fafc;
   border-top: 1px solid var(--border-color);
   padding: 80px 40px 20px;
   position: relative;
@@ -614,13 +609,13 @@ a.btn-card {
 .footer-col h4 {
   font-family: var(--font-title);
   font-size: 1.1rem;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 20px;
   letter-spacing: 1px;
 }
 
 .footer-desc, .news-text {
-  color: var(--text-muted);
+  color: #94a3b8;
   font-size: 0.95rem;
   margin: 15px 0;
 }
@@ -634,18 +629,17 @@ a.btn-card {
 .social-btn {
   font-family: var(--font-title);
   font-size: 0.75rem;
-  color: var(--text-main);
+  color: #ffffff;
   text-decoration: none;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 6px 12px;
   border-radius: 4px;
   transition: var(--transition);
 }
 
 .social-btn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .footer-links, .footer-info {
@@ -655,17 +649,17 @@ a.btn-card {
 .footer-links li, .footer-info li {
   margin-bottom: 12px;
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: #94a3b8;
 }
 
 .footer-links a {
-  color: var(--text-muted);
+  color: #94a3b8;
   text-decoration: none;
   transition: var(--transition);
 }
 
 .footer-links a:hover {
-  color: var(--primary);
+  color: #ffffff;
 }
 
 .contact-icon {
@@ -679,17 +673,17 @@ a.btn-card {
 }
 
 .footer-form input {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 10px;
-  color: #fff;
+  color: #ffffff;
   border-radius: 4px;
   width: 100%;
 }
 
 .footer-form button {
   background: var(--primary);
-  color: #000;
+  color: #ffffff;
   border: none;
   font-family: var(--font-title);
   font-weight: 700;
@@ -698,209 +692,37 @@ a.btn-card {
   cursor: pointer;
 }
 
+.footer-form button:hover {
+  background: var(--primary-hover);
+}
+
 .footer-bottom {
   max-width: 1280px;
   margin: 60px auto 0;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #94a3b8;
 }
 
 .legal-links a {
-  color: var(--text-muted);
+  color: #94a3b8;
   text-decoration: none;
   margin: 0 5px;
 }
 
 .legal-links a:hover {
-  color: var(--primary);
+  color: #ffffff;
 }
 
 /* ==========================================================================
-   7. RESPONSIVIDADE (DISPOSITIVOS MÓVEIS)
+   7. MODAL DE SUCESSO / WHATSAPP
    ========================================================================== */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .glitch-title {
-    font-size: 2.2rem;
-  }
-
-  .hero {
-    padding-top: 120px;
-  }
-
-  .booking-bar {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-/* =========================================================
-   MODO CLARO / ESCURO
-   ========================================================= */
-
-body.light-mode {
-    --bg-color: #f4f4f5;
-    --card-bg: rgba(255, 255, 255, 0.95);
-
-    --primary: #111111;
-    --primary-hover: #333333;
-    --accent: #555555;
-    --accent-cyan: #666666;
-
-    --text-main: #111111;
-    --text-muted: #555555;
-
-    --border-color: rgba(0, 0, 0, 0.12);
-    --border-hover: rgba(0, 0, 0, 0.35);
-}
-
-
-/* =========================================================
-   BOTÃO DE TROCAR TEMA
-   ========================================================= */
-
-.theme-toggle {
-    flex-shrink: 0;
-
-    width: 38px;
-    height: 38px;
-
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: var(--transition);
-}
-
-.theme-toggle:hover {
-    border-color: var(--border-hover);
-    transform: scale(1.08);
-}
-
-
-/* =========================================================
-   AJUSTES DO MODO CLARO
-   ========================================================= */
-
-body.light-mode .navbar {
-    background: rgba(244, 244, 245, 0.95);
-}
-
-body.light-mode .badge {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-body.light-mode .glitch-title {
-    color: var(--text-main);
-    text-shadow: none;
-}
-
-body.light-mode .booking-bar {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-
-
-/* Campos */
-
-body.light-mode .input-group select,
-body.light-mode .input-group input,
-body.light-mode .contato-form input,
-body.light-mode .contato-form select,
-body.light-mode .contato-form textarea,
-body.light-mode .footer-form input {
-    background: #ffffff;
-    color: #111111;
-}
-
-
-/* Textos */
-
-body.light-mode .price,
-body.light-mode .feature-card h4,
-body.light-mode .info-card h4,
-body.light-mode .footer-col h4 {
-    color: var(--text-main);
-}
-
-
-/* Botões dos carros */
-
-body.light-mode .btn-card {
-    color: var(--text-main);
-}
-
-body.light-mode .btn-card:hover,
-body.light-mode .btn-card.active {
-    background: #111111;
-    color: #ffffff;
-    border-color: #111111;
-}
-
-
-/* Tags */
-
-body.light-mode .tag-status.red {
-    background: #e5e7eb;
-    color: #111111;
-}
-
-
-/* Plano em destaque */
-
-body.light-mode .plano-card.destaque {
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-}
-
-
-/* Lista */
-
-body.light-mode .req-list span {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--text-main);
-}
-
-
-/* Rodapé */
-
-body.light-mode .footer {
-    background: #e7e7e9;
-}
-
-body.light-mode .social-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-/* =========================================================
-   MODAL DE SUCESSO / REDIRECIONAMENTO WHATSAPP
-   ========================================================= */
-
 body.no-scroll {
   overflow: hidden;
 }
@@ -908,7 +730,7 @@ body.no-scroll {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
@@ -917,7 +739,7 @@ body.no-scroll {
   z-index: 3000;
   opacity: 0;
   visibility: hidden;
-  transition: var(--transition);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal-overlay.active {
@@ -935,8 +757,8 @@ body.no-scroll {
   padding: 45px 30px 35px;
   text-align: center;
   transform: translateY(25px) scale(0.96);
-  transition: var(--transition);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
 .modal-overlay.active .modal-box {
@@ -987,7 +809,7 @@ body.no-scroll {
   gap: 10px;
   width: 100%;
   background: #25d366;
-  color: #ffffff !important;
+  color: #ffffff;
   text-decoration: none;
   font-family: var(--font-title);
   font-weight: 700;
@@ -1000,26 +822,13 @@ body.no-scroll {
 
 .btn-whatsapp:hover {
   background: #1ebe57;
-  box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
   transform: translateY(-2px);
 }
 
-.btn-whatsapp i {
-  font-size: 1.3rem;
-}
-
-body.light-mode .modal-box {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-}
-
-/* =========================================================
-   NAV ATIVO / SUBTÍTULO DE SEÇÃO / BOTÃO "VER MAIS"
-   ========================================================= */
-
-.nav-links a.active {
-  color: var(--primary);
-}
-
+/* ==========================================================================
+   8. SUBPÁGINAS E FILTROS
+   ========================================================================== */
 .section-subtitle {
   color: var(--text-muted);
   max-width: 560px;
@@ -1037,8 +846,8 @@ body.light-mode .modal-box {
   align-items: center;
   gap: 10px;
   background: transparent;
-  border: 1px solid var(--border-hover);
-  color: var(--text-main);
+  border: 1px solid var(--primary);
+  color: var(--primary);
   text-decoration: none;
   font-family: var(--font-title);
   font-weight: 700;
@@ -1051,19 +860,15 @@ body.light-mode .modal-box {
 
 .btn-view-all:hover {
   background: var(--primary);
-  color: var(--bg-color);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.25);
   transform: translateY(-2px);
 }
 
-/* =========================================================
-   CABEÇALHO DE SUBPÁGINAS (FROTA / PLANOS)
-   ========================================================= */
-
 .page-hero {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 150px 20px 50px;
+  background: var(--hero-bg);
+  max-width: 100%;
+  padding: 160px 20px 60px;
   text-align: center;
 }
 
@@ -1072,20 +877,16 @@ body.light-mode .modal-box {
   font-size: 2.8rem;
   font-weight: 900;
   letter-spacing: 2px;
-  color: var(--text-main);
+  color: #ffffff;
   margin-top: 15px;
 }
 
 .page-hero p {
   max-width: 620px;
   margin: 18px auto 0;
-  color: var(--text-muted);
+  color: #e2e8f0;
   font-size: 1.1rem;
 }
-
-/* =========================================================
-   FILTRO DE CATEGORIA (PÁGINA DE FROTA)
-   ========================================================= */
 
 .filter-tabs {
   display: flex;
@@ -1111,22 +912,48 @@ body.light-mode .modal-box {
 }
 
 .filter-btn:hover {
-  border-color: var(--border-hover);
-  color: var(--text-main);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .filter-btn.active {
   background: var(--primary);
-  color: var(--bg-color);
+  color: #ffffff;
   border-color: var(--primary);
 }
-
-/* =========================================================
-   GRADE DE FROTA / PLANOS EM PÁGINA PRÓPRIA
-   ========================================================= */
 
 .page-section {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px 100px;
+}
+
+/* ==========================================================================
+   9. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .glitch-title {
+    font-size: 2.2rem;
+  }
+
+  .hero {
+    padding-top: 130px;
+  }
+
+  .booking-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
 }
