@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARLOC | Ultra Luxury Edition</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/frotas.css">
+
+</head>
+
+<body>
+
+  <!-- OVERLAY DE FUNDO PARA O MENU MOBILE COM EFEITO BLUR AGRESSIVO -->
+  <div class="menu-backdrop" id="menu-backdrop"></div>
+
+  <!-- MENU HAMBÚRGUER EXPANDIDO (DRAWER ULTRA CABULOSO DARK GLASS) -->
+  <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-glow-effect"></div>
+
+    <div class="drawer-header">
+      <div class="logo">
+        <span class="logo-main">CARLOC</span>
+        <span class="badge-v2">PRO 2026</span>
+      </div>
+      <button class="drawer-close" id="drawer-close" aria-label="Fechar Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <ul class="drawer-nav">
+        <li class="nav-item-wrapper">
+          <a href="#inicio" class="drawer-link active">
+            <div class="icon-box"><i class="fa-solid fa-house-laptop"></i></div>
+            <span class="link-text">Início</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </a>
+        </li>
+        <li class="nav-item-wrapper">
+          <a href="#frota" class="drawer-link">
+            <div class="icon-box"><i class="fa-solid fa-gauge-high"></i></div>
+            <span class="link-text">Frota & Coleção</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </a>
+        </li>
+        <li class="nav-item-wrapper">
+          <a href="#planos" class="drawer-link">
+            <div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
+            <span class="link-text">Planos de KM</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </a>
+        </li>
+        <li class="nav-item-wrapper">
+          <a href="#experiencia" class="drawer-link">
+            <div class="icon-box"><i class="fa-solid fa-crown"></i></div>
+            <span class="link-text">Experiência VIP</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </a>
+        </li>
+        <li class="nav-item-wrapper">
+          <a href="#duvidas" class="drawer-link">
+            <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+            <span class="link-text">Suporte & FAQ</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </a>
+        </li>
+      </ul>
+
+      <div class="drawer-actions">
+        <a href="auth.html" class="btn-drawer-login" id="drawer-auth-link">
+          <i class="fa-solid fa-user"></i>
+          <span class="auth-link-label">CADASTRAR / LOGIN</span>
+          <span class="auth-logout-label">SAIR DA CONTA</span>
+        </a>
+        <a href="#solicitar" class="btn-drawer-primary">
+          <span>SOLICITAR RESERVA</span>
+          <i class="fa-solid fa-bolt-lightning"></i>
+        </a>
+        <a href="https://wa.me/5500000000000" target="_blank" class="btn-drawer-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Atendimento VIP via WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <div class="footer-info">
+        <span class="status-dot"></span>
+        <p>CARLOC High Performance 2026</p>
+      </div>
+      <div class="drawer-socials">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- NAVBAR EXPANDIDA TRANSPARENTE -->
+  <nav class="navbar-full">
+    <div class="nav-container">
+
+      <div class="logo">
+        <div class="logo-icon-wrapper spin-logo">
+          <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" stroke="url(#metallic-grad)" stroke-width="2" opacity="0.3" />
+            <path d="M50 15C36.2 15 25 26.2 25 40C25 58.8 50 85 50 85C50 85 75 58.8 75 40C75 26.2 63.8 15 50 15Z"
+              fill="url(#metallic-grad)" />
+            <circle cx="50" cy="38" r="10" fill="#0f1115" />
+            <path d="M38 40L42 33H58L62 40H66C67.1 40 68 40.9 68 42V46H32V42C32 40.9 32.9 40 34 40H38Z"
+              fill="#ffffff" />
+            <circle cx="41" cy="46" r="2.5" fill="#0f1115" />
+            <circle cx="59" cy="46" r="2.5" fill="#0f1115" />
+            <defs>
+              <linearGradient id="metallic-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="30%" stop-color="#0f1115" />
+                <stop offset="70%" stop-color="#64748b" />
+                <stop offset="100%" stop-color="#000000" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="logo-text-group">
+          <span class="logo-main">CARLOC</span>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#inicio" class="nav-item">INÍCIO</a>
+        <a href="#frota" class="nav-item">FROTA</a>
+        <a href="#planos" class="nav-item">PLANOS</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="auth.html" class="btn-nav-login" id="nav-auth-link">
+          <i class="fa-solid fa-user"></i>
+          <span class="auth-link-label">CADASTRAR / LOGIN</span>
+          <span class="auth-logout-label">SAIR DA CONTA</span>
+        </a>
+        <a href="#solicitar" class="btn-dark-glow">
+          <span>SOLICITAR</span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION LATERAL COM VÍDEO -->
+  <header class="hero" id="inicio">
+    <div class="hero-video-wrapper">
+      <video autoplay loop muted playsinline class="hero-video">
+        <source src="assets/havalvd.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+
+    <div class="hero-content-left">
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot"></span>
+        <span>GPS TRACKING & HIGH PERFORMANCE 2026</span>
+      </div>
+
+      <h1 class="hero-title reveal-up">
+        DOMINE AS RUAS<br />
+        <span class="text-liquid-silver">MAXIMIZE SEU PODER</span>
+      </h1>
+
+      <p class="hero-subtitle reveal-up">
+        A frota mais refinada e tecnológica para motoristas de elite. Veículos elétricos, híbridos e de alta eficiência
+        preparados para sua rentabilidade máxima.
+      </p>
+
+      <div class="floating-widget reveal-up">
+        <div class="widget-field">
+          <label><i class="fa-solid fa-car-rear"></i> CATEGORIA</label>
+          <select>
+            <option>Todos os Modelos</option>
+            <option>Elétricos High-Tech</option>
+            <option>Sedan Comfort / Black</option>
+            <option>Motos / Utilitários Express</option>
+          </select>
+        </div>
+
+        <div class="widget-sep"></div>
+
+        <div class="widget-field">
+          <label><i class="fa-regular fa-calendar"></i> RETIRADA</label>
+          <input type="date" />
+        </div>
+
+        <div class="widget-sep"></div>
+
+        <div class="widget-field">
+          <label><i class="fa-solid fa-sliders"></i> PLANO DE KM</label>
+          <select>
+            <option>Quilometragem Livre</option>
+            <option>Pacote Semanal Flex</option>
+          </select>
+        </div>
+
+        <button class="btn-widget-search">
+          <span>BUSCAR VEÍCULO</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SEÇÃO INTERMEDIÁRIA TELEMETRIA -->
+  <section class="telemetry-strip reveal-up" id="tecnologia">
+    <div class="telemetry-container">
+      <div class="telemetry-item">
+        <span class="telemetry-val">100%</span>
+        <span class="telemetry-lbl">FROTA COM TELEMETRIA 24/7</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <span class="telemetry-val">&lt; 15min</span>
+        <span class="telemetry-lbl">LIBERAÇÃO E RETIRADA VIP</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <span class="telemetry-val">R$ 0</span>
+        <span class="telemetry-lbl">TAXA DE MANUTENÇÃO PREVENTIVA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLEÇÃO DE VEÍCULOS -->
+  <section id="frota" class="fleet-section">
+    <div class="section-head reveal-up">
+      <div>
+        <span class="sub-tag">Modelos variáveis</span>
+        <h2>FROTA PARA TRABALHO</h2>
+      </div>
+      <div class="fleet-tabs">
+        <button class="tab-btn active">TODOS</button>
+        <button class="tab-btn">ELÉTRICOS</button>
+        <button class="tab-btn">COMFORT / BLACK</button>
+      </div>
+    </div>
+
+    <div class="fleet-grid">
+      <div class="vehicle-card reveal-up" data-category="electric">
+        <div class="card-badge">DISPONÍVEL</div>
+        <div class="card-img">
+          <img src="assets/ft1.webp" alt="BYD Dolphin" />
+        </div>
+        <div class="card-body">
+          <span class="card-cat">100% ELÉTRICO • TECH</span>
+          <h3>BYD Dolphin Premium</h3>
+          <ul class="card-specs">
+            <li><i class="fa-solid fa-bolt"></i> Custo R$ 0 Gasolina</li>
+            <li><i class="fa-solid fa-shield-halved"></i> UberX / Comfort</li>
+          </ul>
+          <div class="card-footer">
+            <div class="price">R$ 550 <span>/sem</span></div>
+            <button class="btn-card-action">RESERVAR</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card reveal-up" data-category="economy">
+        <div class="card-badge">DISPONÍVEL</div>
+        <div class="card-img">
+          <img src="assets/ft2.webp" alt="Renault Kwid" />
+        </div>
+        <div class="card-body">
+          <span class="card-cat">MÁXIMA ECONOMIA</span>
+          <h3>Renault Kwid Zen</h3>
+          <ul class="card-specs">
+            <li><i class="fa-solid fa-gas-pump"></i> Motor 1.0 Flex</li>
+            <li><i class="fa-solid fa-car-side"></i> UberX / 99Pop</li>
+          </ul>
+          <div class="card-footer">
+            <div class="price">R$ 390 <span>/sem</span></div>
+            <button class="btn-card-action">RESERVAR</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card highlight reveal-up" data-category="motorcycle">
+        <div class="card-badge badge-dark">MAIS POPULAR</div>
+        <div class="card-img">
+          <img src="assets/ft3.jpg" alt="Honda CG 160 Titan" />
+        </div>
+        <div class="card-body">
+          <span class="card-cat">ENTREGAS ULTRA</span>
+          <h3>Honda CG 160 Titan</h3>
+          <ul class="card-specs">
+            <li><i class="fa-solid fa-gauge-high"></i> Até 40 km/L</li>
+            <li><i class="fa-solid fa-box"></i> iFood / Flash / Uber & 99pop </li>
+          </ul>
+          <div class="card-footer">
+            <div class="price">R$ 220 <span>/sem</span></div>
+            <button class="btn-card-action">RESERVAR</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="vehicle-card reveal-up" data-category="comfort">
+        <div class="card-badge">BLACK EDITION</div>
+        <div class="card-img">
+          <img src="assets/ft4.webp" alt="Haval H6" />
+        </div>
+        <div class="card-body">
+          <span class="card-cat">HÍBRIDO • UBER BLACK</span>
+          <h3>Haval H6 PHEV19</h3>
+          <ul class="card-specs">
+            <li><i class="fa-solid fa-charging-station"></i> Híbrido Plug-in</li>
+            <li><i class="fa-solid fa-crown"></i> Categoria Black</li>
+          </ul>
+          <div class="card-footer">
+            <div class="price">R$ 940 <span>/sem</span></div>
+            <button class="btn-card-action">RESERVAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTÃO CENTRALIZADO PARA DIRECIONAMENTO -->
+    <div class="fleet-more-wrapper reveal-up">
+      <a href="frotas.html" class="btn-see-all">
+        <span>VER TODOS OS VEÍCULOS E CATEGORIAS</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="booking-section" id="solicitar">
+    <div class="booking-copy">
+      <span class="sub-tag">RESERVA VIP</span>
+      <h2>Pronto para colocar sua próxima rota na rua?</h2>
+      <p>Envie seus dados. Nossa equipe retorna com disponibilidade, valores e o melhor plano para sua operação.</p>
+    </div>
+    <form class="booking-form" id="booking-form">
+      <label for="booking-name">Nome completo</label>
+      <input id="booking-name" type="text" placeholder="Seu nome" required />
+      <label for="booking-vehicle">Veículo de interesse</label>
+      <select id="booking-vehicle" required>
+        <option value="">Selecione um modelo</option>
+        <option>BYD Dolphin Premium</option>
+        <option>BYD Dolphin Plus</option>
+        <option>BYD Dolphin GS</option>
+        <option>Renault Kwid Zen</option>
+        <option>Renault Kwid Intense</option>
+        <option>Renault Kwid Outsider</option>
+        <option>Honda CG 160 Titan</option>
+        <option>Honda CG 160 Start</option>
+        <option>Honda CG 160 Fan</option>
+        <option>Haval H6 PHEV19</option>
+        <option>Haval H6 HEV2</option>
+        <option>Haval H6 GT</option>
+        <option>Moto Express</option>
+      </select>
+      <label for="booking-phone">Telefone</label>
+      <input id="booking-phone" type="tel" placeholder="(00) 00000-0000" required />
+      <button class="btn-dark-glow" type="submit">ENVIAR SOLICITAÇÃO <i class="fa-solid fa-arrow-right"></i></button>
+      <p class="booking-message" id="booking-message" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="plans-section" id="planos">
+    <div class="content-section-head">
+      <span class="sub-tag">PLANOS DE KM</span>
+      <h2>Escolha o ritmo da sua operação</h2>
+      <p>Planos transparentes para quem trabalha todos os dias ou precisa de flexibilidade para começar.</p>
+    </div>
+    <div class="plans-grid">
+      <article class="plan-card">
+        <span class="plan-label">FLEX</span>
+        <h3>Pacote Semanal</h3>
+        <p>Ideal para testar um modelo e ajustar sua rotina sem compromisso longo.</p>
+        <strong>7 dias</strong>
+        <a href="#solicitar" class="section-action">Escolher plano <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+      <article class="plan-card featured">
+        <span class="plan-label">POPULAR</span>
+        <h3>Quilometragem Livre</h3>
+        <p>Mais liberdade para rodar, produzir e manter sua renda em movimento.</p>
+        <strong>Sem limite de km</strong>
+        <a href="#solicitar" class="section-action">Escolher plano <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+      <article class="plan-card">
+        <span class="plan-label">PRO</span>
+        <h3>Operação Mensal</h3>
+        <p>Condição estável para motoristas que já têm uma agenda consolidada.</p>
+        <strong>30 dias</strong>
+        <a href="#solicitar" class="section-action">Falar com a equipe <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="experience-section" id="experiencia">
+    <div class="experience-inner">
+      <div>
+        <span class="sub-tag">EXPERIENCIA CARLOC</span>
+        <h2>Mais que um carro. Uma operação pronta para render.</h2>
+      </div>
+      <div class="experience-points">
+        <p><i class="fa-solid fa-location-dot"></i><span><strong>Retirada sem espera</strong>Agendamento digital e liberação rápida.</span></p>
+        <p><i class="fa-solid fa-screwdriver-wrench"></i><span><strong>Manutenção preventiva</strong>Você trabalha enquanto a equipe cuida do veículo.</span></p>
+        <p><i class="fa-solid fa-headset"></i><span><strong>Suporte de verdade</strong>Atendimento para resolver quando você precisar.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="duvidas">
+    <div class="content-section-head">
+      <span class="sub-tag">SUPORTE &amp; FAQ</span>
+      <h2>As respostas antes da primeira rota</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>O que preciso para reservar um veículo?</summary>
+        <p>Tenha sua habilitação válida, documento de identificação e cadastro aprovado na CARLOC.</p>
+      </details>
+      <details>
+        <summary>Posso trocar o plano depois de começar?</summary>
+        <p>Sim. Nossa equipe avalia a melhor mudança de plano conforme sua operação e disponibilidade da frota.</p>
+      </details>
+      <details>
+        <summary>Como funciona a manutenção?</summary>
+        <p>A manutenção preventiva é acompanhada pela CARLOC. Você recebe orientações e agenda o atendimento sem interromper sua operação.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="#inicio" class="footer-logo">CARLOC <span>PRO 2026</span></a>
+        <p>Mobilidade inteligente para quem transforma quilômetros em resultado.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Navegação</h3>
+        <a href="#frota">Frota</a>
+        <a href="#planos">Planos de KM</a>
+        <a href="#experiencia">Experiência VIP</a>
+      </div>
+      <div class="footer-column">
+        <h3>Atendimento</h3>
+        <a href="#duvidas">Dúvidas frequentes</a>
+        <a href="auth.html">Cadastrar / Login</a>
+        <a href="#solicitar">Solicitar reserva</a>
+      </div>
+      <div class="footer-column">
+        <h3>Fale conosco</h3>
+        <a href="mailto:contato@carloc.com">contato@carloc.com</a>
+        <a href="tel:+5500000000000">(00) 00000-0000</a>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CARLOC. Todos os direitos reservados.</span>
+      <span>Feito para mover sua operação.</span>
+    </div>
+  </footer>
+
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

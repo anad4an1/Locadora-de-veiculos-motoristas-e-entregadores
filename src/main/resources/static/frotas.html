@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARLOC | Catálogo Completo de Frota</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/frotas.css" />
+</head>
+<body>
+
+  <!-- HEADER SIMPLES DE NAVEGAÇÃO -->
+  <header class="catalog-header">
+    <div class="header-container">
+      <a href="index.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> VOLTAR AO INÍCIO
+      </a>
+      <div class="logo">
+        <span class="logo-main">CARLOC</span>
+        <span class="badge-v2">CATÁLOGO</span>
+      </div>
+      <a href="auth.html" class="catalog-login-link">
+        <i class="fa-solid fa-user"></i> CADASTRAR / LOGIN
+      </a>
+    </div>
+  </header>
+
+  <main class="catalog-main">
+    <!-- NAVEGAÇÃO DE CATEGORIAS / MARCAS -->
+    <nav class="brand-tabs">
+      <button class="tab-item active" data-filter="all">TODOS OS MODELOS</button>
+      <button class="tab-item" data-filter="byd">BYD</button>
+      <button class="tab-item" data-filter="haval">HAVAL</button>
+      <button class="tab-item" data-filter="renault">RENAULT</button>
+      <button class="tab-item" data-filter="honda">HONDA</button>
+      <button class="tab-item" data-filter="motos-utils">MOTOS &amp; UTILS</button>
+    </nav>
+
+    <!-- GRID DE VEICULOS -->
+    <div class="catalog-grid">
+      <article class="catalog-card" data-brand="byd">
+        <span class="badge-tag">ELETRICO</span>
+        <div class="card-img-container">
+          <img src="assets/ft1.webp" alt="BYD Dolphin Premium" />
+        </div>
+        <p class="vehicle-brand">BYD</p>
+        <h3 class="model-title">Dolphin Premium</h3>
+        <p class="vehicle-type">Hatch compacto eletrico</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="renault">
+        <span class="badge-tag">ECONOMICO</span>
+        <div class="card-img-container">
+          <img src="assets/ft2.webp" alt="Renault Kwid Zen" />
+        </div>
+        <p class="vehicle-brand">RENAULT</p>
+        <h3 class="model-title">Kwid Zen</h3>
+        <p class="vehicle-type">Hatch urbano compacto</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="honda">
+        <span class="badge-tag">MAIS POPULAR</span>
+        <div class="card-img-container">
+          <img src="assets/ft3.jpg" alt="Honda CG 160 Titan" />
+        </div>
+        <p class="vehicle-brand">HONDA</p>
+        <h3 class="model-title">CG 160 Titan</h3>
+        <p class="vehicle-type">Motocicleta urbana</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="haval">
+        <span class="badge-tag">HIBRIDO</span>
+        <div class="card-img-container">
+          <img src="assets/ft4.webp" alt="GWM Haval H6 PHEV19" />
+        </div>
+        <p class="vehicle-brand">GWM HAVAL</p>
+        <h3 class="model-title">H6 PHEV19</h3>
+        <p class="vehicle-type">SUV hibrido plug-in</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="byd">
+        <span class="badge-tag">ELETRICO</span>
+        <div class="card-img-container">
+          <img src="assets/ft5.jpg" alt="BYD Dolphin Plus" />
+        </div>
+        <p class="vehicle-brand">BYD</p>
+        <h3 class="model-title">Dolphin Plus</h3>
+        <p class="vehicle-type">Hatch eletrico esportivo</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="byd">
+        <span class="badge-tag">ELETRICO</span>
+        <div class="card-img-container">
+          <img src="assets/ft6.jpg" alt="BYD Dolphin GS" />
+        </div>
+        <p class="vehicle-brand">BYD</p>
+        <h3 class="model-title">Dolphin GS</h3>
+        <p class="vehicle-type">Hatch eletrico compacto</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="haval">
+        <span class="badge-tag">HIBRIDO</span>
+        <div class="card-img-container">
+          <img src="assets/ft7.jpg" alt="GWM Haval H6 HEV2" />
+        </div>
+        <p class="vehicle-brand">GWM HAVAL</p>
+        <h3 class="model-title">H6 HEV2</h3>
+        <p class="vehicle-type">SUV hibrido eletrico</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="haval">
+        <span class="badge-tag">SUV</span>
+        <div class="card-img-container">
+          <img src="assets/ft8.jpg" alt="GWM Haval H6 GT" />
+        </div>
+        <p class="vehicle-brand">GWM HAVAL</p>
+        <h3 class="model-title">H6 GT</h3>
+        <p class="vehicle-type">SUV hibrido de alta potencia</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="renault">
+        <span class="badge-tag">ECONOMICO</span>
+        <div class="card-img-container">
+          <img src="assets/ft9.jpg" alt="Renault Kwid Intense" />
+        </div>
+        <p class="vehicle-brand">RENAULT</p>
+        <h3 class="model-title">Kwid Intense</h3>
+        <p class="vehicle-type">Hatch urbano economico</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="renault">
+        <span class="badge-tag">AVENTURA</span>
+        <div class="card-img-container">
+          <img src="assets/ft10.jpg" alt="Renault Kwid Outsider" />
+        </div>
+        <p class="vehicle-brand">RENAULT</p>
+        <h3 class="model-title">Kwid Outsider</h3>
+        <p class="vehicle-type">Hatch urbano aventureiro</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="honda">
+        <span class="badge-tag">POPULAR</span>
+        <div class="card-img-container">
+          <img src="assets/ft11.jpg" alt="Honda CG 160 Start" />
+        </div>
+        <p class="vehicle-brand">HONDA</p>
+        <h3 class="model-title">CG 160 Start</h3>
+        <p class="vehicle-type">Motocicleta urbana</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="honda">
+        <span class="badge-tag">URBANA</span>
+        <div class="card-img-container">
+          <img src="assets/ft12.jpg" alt="Honda CG 160 Fan" />
+        </div>
+        <p class="vehicle-brand">HONDA</p>
+        <h3 class="model-title">CG 160 Fan</h3>
+        <p class="vehicle-type">Motocicleta para cidade</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+      <article class="catalog-card" data-brand="motos-utils">
+        <span class="badge-tag">UTILITARIO</span>
+        <div class="card-img-container">
+          <img src="assets/ft13.webp" alt="Moto utilitaria para entregas" />
+        </div>
+        <p class="vehicle-brand">MOTOS &amp; UTILS</p>
+        <h3 class="model-title">Moto Express</h3>
+        <p class="vehicle-type">Mobilidade para entregas</p>
+        <div class="card-actions">
+          <button class="btn-action primary">RESERVAR</button>
+          <button class="btn-action secondary">SAIBA MAIS</button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">CARLOC <span>PRO 2026</span></a>
+        <p>Mobilidade inteligente para quem transforma quilômetros em resultado.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Catálogo</h3>
+        <a href="frotas.html">Todos os modelos</a>
+        <a href="frotas.html">BYD</a>
+        <a href="frotas.html">Haval</a>
+      </div>
+      <div class="footer-column">
+        <h3>Atendimento</h3>
+        <a href="index.html#duvidas">Dúvidas frequentes</a>
+        <a href="auth.html">Cadastrar / Login</a>
+        <a href="index.html#solicitar">Solicitar reserva</a>
+      </div>
+      <div class="footer-column">
+        <h3>Fale conosco</h3>
+        <a href="mailto:contato@carloc.com">contato@carloc.com</a>
+        <a href="tel:+5500000000000">(00) 00000-0000</a>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CARLOC. Todos os direitos reservados.</span>
+      <a href="index.html">Voltar para o início</a>
+    </div>
+  </footer>
+
+  <script src="js/frotas.js"></script>
+
+</body>
+</html>

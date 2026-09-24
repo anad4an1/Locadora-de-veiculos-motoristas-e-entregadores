@@ -1,0 +1,398 @@
+:root {
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-color: #0f1115;
+  --border-color: #e5e7eb;
+  --primary-btn: #000000;
+  --font-main: 'Space Grotesk', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.catalog-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 40px;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-main {
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.badge-v2 {
+  background: #000;
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.catalog-login-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.catalog-login-link:hover {
+  opacity: 0.6;
+}
+
+/* CONTAINER PRINCIPAL */
+.catalog-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ABAS DE MARCAS */
+.brand-tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 40px;
+  overflow-x: auto;
+}
+
+.tab-item {
+  background: none;
+  border: none;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #666;
+  padding-bottom: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #000;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+}
+
+/* GRID */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* CARDS */
+.catalog-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.badge-tag {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  z-index: 1;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(8px);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #000;
+  letter-spacing: 0.5px;
+}
+
+.card-img-container {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #eef0f2;
+  border-radius: 28px;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  isolation: isolate;
+}
+
+.card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.04) contrast(1.02);
+  transition: transform 0.35s ease;
+}
+
+.catalog-card:hover .card-img-container img {
+  transform: scale(1.035);
+}
+
+.catalog-card[data-brand="honda"] .card-img-container img,
+.catalog-card[data-brand="motos-utils"] .card-img-container img {
+  object-position: center 48%;
+}
+
+.vehicle-brand {
+  color: #666;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.vehicle-type {
+  color: #666;
+  font-size: 0.75rem;
+  margin-top: -14px;
+  margin-bottom: 18px;
+}
+
+.model-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #000;
+  min-height: 2.4em;
+  display: flex;
+  align-items: center;
+}
+
+/* BOTÕES DOS CARDS */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: all 0.2s ease;
+}
+
+.btn-action.primary {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.btn-action.primary:hover {
+  background: #333;
+}
+
+.btn-action.secondary {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.btn-action.secondary:hover {
+  background: #f0f0f0;
+}
+
+.btn-action.full-width {
+  width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.site-footer {
+  margin-top: 60px;
+  padding: 70px 24px 24px;
+  color: #c7cbd1;
+  background: #0d0f12;
+}
+
+.footer-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 48px;
+}
+
+.footer-brand p { max-width: 280px; margin-top: 18px; color: #8f969f; line-height: 1.6; }
+.footer-logo { color: #fff; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.06em; text-decoration: none; }
+.footer-logo span { margin-left: 6px; padding: 3px 5px; color: #0d0f12; background: #fff; border-radius: 3px; font-size: 0.55rem; letter-spacing: 0.04em; vertical-align: middle; }
+.footer-column { display: flex; flex-direction: column; gap: 12px; }
+.footer-column h3 { margin: 0 0 6px; color: #fff; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.footer-column a, .footer-bottom a { color: #8f969f; font-size: 0.82rem; text-decoration: none; }
+.footer-column a:hover, .footer-bottom a:hover { color: #fff; }
+.footer-bottom { max-width: 1400px; margin: 58px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; gap: 20px; color: #737a83; font-size: 0.72rem; }
+
+.details-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.details-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 17, 21, 0.58);
+  backdrop-filter: blur(4px);
+}
+
+.details-modal-content {
+  position: relative;
+  width: min(100%, 420px);
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(15, 17, 21, 0.22);
+}
+
+.details-modal-content h2 {
+  margin: 6px 0 8px;
+  font-size: 1.45rem;
+  text-transform: uppercase;
+}
+
+.details-modal-content > p:not(.vehicle-brand) {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.details-modal-content .btn-action {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.details-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .catalog-header {
+    padding: 18px 20px;
+  }
+
+  .header-container {
+    gap: 18px;
+  }
+
+  .catalog-login-link {
+    font-size: 0.68rem;
+  }
+
+  .back-link {
+    font-size: 0.72rem;
+  }
+
+  .logo-main {
+    font-size: 1.1rem;
+  }
+
+  .catalog-main {
+    padding: 28px 14px;
+  }
+
+  .brand-tabs {
+    gap: 22px;
+    margin-bottom: 28px;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 34px 22px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { margin-top: 38px; flex-direction: column; gap: 8px; }
+
+  .card-img-container {
+    aspect-ratio: 4 / 3;
+    border-radius: 22px;
+  }
+
+  .badge-tag {
+    top: 22px;
+    right: 22px;
+  }
+}

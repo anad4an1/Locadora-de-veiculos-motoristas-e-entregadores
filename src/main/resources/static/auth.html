@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CARLOC | Cadastro e Login</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-intro">
+      <a class="auth-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar para o inicio</a>
+      <div class="auth-brand">CARLOC <span>PRO 2026</span></div>
+      <div class="auth-copy">
+        <p class="eyebrow">MOBILIDADE SEM LIMITES</p>
+        <h1>Sua proxima rota comeca aqui.</h1>
+        <p>Crie sua conta para reservar veiculos, acompanhar seus pedidos e acessar uma experiencia sob medida.</p>
+      </div>
+    </section>
+
+    <section class="auth-panel" aria-label="Autenticacao">
+      <div class="auth-tabs" role="tablist">
+        <button class="auth-tab active" type="button" data-mode="register" role="tab" aria-selected="true">Cadastrar</button>
+        <button class="auth-tab" type="button" data-mode="login" role="tab" aria-selected="false">Entrar</button>
+      </div>
+
+      <form class="auth-form" id="register-form">
+        <div class="form-heading">
+          <p class="eyebrow">PRIMEIRO ACESSO</p>
+          <h2>Crie sua conta</h2>
+          <p>Preencha seus dados para comecar.</p>
+        </div>
+        <label for="register-email">Email</label>
+        <input id="register-email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required />
+        <label for="register-phone">Numero de telefone</label>
+        <input id="register-phone" name="phone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required />
+        <label for="register-password">Senha</label>
+        <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="6" placeholder="Minimo de 6 caracteres" required />
+        <button class="auth-submit" type="submit">Criar cadastro <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+
+      <form class="auth-form" id="login-form" hidden>
+        <div class="form-heading">
+          <p class="eyebrow">BEM-VINDO DE VOLTA</p>
+          <h2>Entre na sua conta</h2>
+          <p>Acesse seus dados e reservas.</p>
+        </div>
+        <label for="login-email">Email</label>
+        <input id="login-email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required />
+        <label for="login-password">Senha</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Sua senha" required />
+        <button class="auth-submit" type="submit">Entrar <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+
+      <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+      <p class="auth-note"><i class="fa-solid fa-lock"></i> Seus dados ficam armazenados apenas neste navegador.</p>
+    </section>
+  </main>
+  <footer class="auth-footer">
+    <span>© 2026 CARLOC. Todos os direitos reservados.</span>
+    <a href="index.html">Voltar para o início</a>
+    <a href="frotas.html">Ver catálogo</a>
+  </footer>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarLoc | Planos de Locação</title>
+    <!-- Ícones Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+/* ==========================================================================
+
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (PALETA PRETO, CINZA E CARBONO)
+   ========================================================================== */
+:root {
+  --bg-color: #08080a;          /* Preto Profundo */
+  --card-bg: rgba(18, 18, 22, 0.9); /* Grafite Escuro Translucido */
+  
+  /* PALETA MONOCROMÁTICA */
+  --primary: #ffffff;           /* Branco Puro (Destaques) */
+  --primary-hover: #d1d5db;     /* Cinza Claro (Hover) */
+  --accent: #8e95a2;            /* Cinza Aço / Prata */
+  --accent-cyan: #d1d5db;       /* Suporte Monocromático */
+  
+  --text-main: #f3f4f6;         /* Branco Acinzentado */
+  --text-muted: #808896;        /* Cinza Médio */
+  
+  /* BORDAS E SOMBRAS */
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.4);
+  
+  --font-title: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Fundo de Partículas / Canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   2. NAVBAR
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(8, 8, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+}
+
+.logo {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--text-main);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.btn-nav {
+  padding: 8px 20px;
+  border: 1px solid var(--border-hover);
+  border-radius: 4px;
+  color: var(--text-main) !important;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-nav:hover {
+  background: var(--primary);
+  color: #000 !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero {
+  padding-top: 150px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-hover);
+  color: var(--text-main);
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.glitch-title {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.subtitle {
+  max-width: 650px;
+  margin: 20px auto 40px;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+/* BARRA DE CONSULTA / BOOKING */
+.booking-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-group label {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.input-group select,
+.input-group input {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+}
+
+.input-group select:focus,
+.input-group input:focus {
+  border-color: var(--border-hover);
+}
+
+.btn-search {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  font-family: var(--font-title);
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: auto;
+}
+
+.btn-search:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   4. FROTA & CARDS DE VEÍCULOS
+   ========================================================================== */
+.gallery-section, .info-section {
+  padding: 80px 0;
+}
+
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--text-main);
+}
+
+.section-header .line {
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin-top: 10px;
+}
+
+.grid-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card-tilt {
+  background: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+}
+
+.card-tilt:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+}
+
+.tag-status {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffffff;
+  color: #000;
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.tag-status.red {
+  background: #3a3f47;
+  color: #fff;
+  border: 1px solid var(--border-hover);
+}
+
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 218px;
+  overflow: hidden;
+  filter: grayscale(20%);
+  transition: var(--transition);
+  background-size: cover;
+}
+
+.card-tilt:hover .img-wrapper {
+  filter: grayscale(0%);
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.card-tilt:hover .img-wrapper img {
+  transform: scale(1.05);
+}
+
+.card-info {
+  padding: 20px;
+}
+
+.category {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card-info h3 {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  margin: 5px 0 15px;
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.price-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 15px;
+}
+
+.price {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.price span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: normal;
+}
+
+.btn-card {
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+a.btn-card {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-card:hover, .btn-card.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* ==========================================================================
+   5. DIFERENCIAIS E CONTEÚDO INFORMATIVO
+   ========================================================================== */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.feature-card, .info-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.feature-card h4, .info-card h4 {
+  font-family: var(--font-title);
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.proposta-grid {
+  background: var(--card-bg);
+  padding: 35px;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+}
+
+.cards-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* REQUISITOS */
+.requisitos-box {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.req-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.req-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.req-list span {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* PLANOS DE LOCAÇÃO */
+.planos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.plano-card {
+  background: var(--card-bg);
+  padding: 35px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.plano-card.destaque {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+}
+
+.badge-plano {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.plano-card h3 {
+  font-family: var(--font-title);
+  margin-bottom: 5px;
+}
+
+.plano-price {
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.plano-card ul {
+  list-style: none;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.plano-card li {
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+
+/* FAQ */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.faq-item {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.faq-item h4 {
+  font-family: var(--font-title);
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* FORMULÁRIO DE CONTATO */
+.contato-container {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.contato-form input,
+.contato-form select,
+.contato-form textarea {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+}
+
+.contato-form input:focus,
+.contato-form select:focus,
+.contato-form textarea:focus {
+  border-color: var(--border-hover);
+}
+
+/* ==========================================================================
+   6. RODAPÉ (FOOTER)
+   ========================================================================== */
+.footer {
+  background: #040405;
+  border-top: 1px solid var(--border-color);
+  padding: 80px 40px 20px;
+  position: relative;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-col h4 {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.footer-desc, .news-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 15px 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  color: var(--text-main);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.social-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-links, .footer-info {
+  list-style: none;
+}
+
+.footer-links li, .footer-info li {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.contact-icon {
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.footer-form {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-form input {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  color: #fff;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.footer-form button {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  font-family: var(--font-title);
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 60px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.legal-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.legal-links a:hover {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (DISPOSITIVOS MÓVEIS)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .glitch-title {
+    font-size: 2.2rem;
+  }
+
+  .hero {
+    padding-top: 120px;
+  }
+
+  .booking-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* =========================================================
+   MODO CLARO / ESCURO
+   ========================================================= */
+
+body.light-mode {
+    --bg-color: #f4f4f5;
+    --card-bg: rgba(255, 255, 255, 0.95);
+
+    --primary: #111111;
+    --primary-hover: #333333;
+    --accent: #555555;
+    --accent-cyan: #666666;
+
+    --text-main: #111111;
+    --text-muted: #555555;
+
+    --border-color: rgba(0, 0, 0, 0.12);
+    --border-hover: rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   BOTÃO DE TROCAR TEMA
+   ========================================================= */
+
+.theme-toggle {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    border-color: var(--border-hover);
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   AJUSTES DO MODO CLARO
+   ========================================================= */
+
+body.light-mode .navbar {
+    background: rgba(244, 244, 245, 0.95);
+}
+
+body.light-mode .badge {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .glitch-title {
+    color: var(--text-main);
+    text-shadow: none;
+}
+
+body.light-mode .booking-bar {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Campos */
+
+body.light-mode .input-group select,
+body.light-mode .input-group input,
+body.light-mode .contato-form input,
+body.light-mode .contato-form select,
+body.light-mode .contato-form textarea,
+body.light-mode .footer-form input {
+    background: #ffffff;
+    color: #111111;
+}
+
+
+/* Textos */
+
+body.light-mode .price,
+body.light-mode .feature-card h4,
+body.light-mode .info-card h4,
+body.light-mode .footer-col h4 {
+    color: var(--text-main);
+}
+
+
+/* Botões dos carros */
+
+body.light-mode .btn-card {
+    color: var(--text-main);
+}
+
+body.light-mode .btn-card:hover,
+body.light-mode .btn-card.active {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
+
+
+/* Tags */
+
+body.light-mode .tag-status.red {
+    background: #e5e7eb;
+    color: #111111;
+}
+
+
+/* Plano em destaque */
+
+body.light-mode .plano-card.destaque {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Lista */
+
+body.light-mode .req-list span {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-main);
+}
+
+
+/* Rodapé */
+
+body.light-mode .footer {
+    background: #e7e7e9;
+}
+
+body.light-mode .social-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================
+   MODAL DE SUCESSO / REDIRECIONAMENTO WHATSAPP
+   ========================================================= */
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 45px 30px 35px;
+  text-align: center;
+  transform: translateY(25px) scale(0.96);
+  transition: var(--transition);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.modal-overlay.active .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--text-main);
+}
+
+.modal-icon {
+  font-size: 2.6rem;
+  color: #25d366;
+  margin-bottom: 15px;
+}
+
+.modal-box h3 {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.modal-box p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 28px;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #25d366;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  padding: 14px 20px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe57;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp i {
+  font-size: 1.3rem;
+}
+
+body.light-mode .modal-box {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   NAV ATIVO / SUBTÍTULO DE SEÇÃO / BOTÃO "VER MAIS"
+   ========================================================= */
+
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 560px;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.view-all-wrapper {
+  text-align: center;
+  margin-top: 45px;
+}
+
+.btn-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  color: var(--text-main);
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.btn-view-all:hover {
+  background: var(--primary);
+  color: var(--bg-color);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CABEÇALHO DE SUBPÁGINAS (FROTA / PLANOS)
+   ========================================================= */
+
+.page-hero {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 150px 20px 50px;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--text-main);
+  margin-top: 15px;
+}
+
+.page-hero p {
+  max-width: 620px;
+  margin: 18px auto 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* =========================================================
+   FILTRO DE CATEGORIA (PÁGINA DE FROTA)
+   ========================================================= */
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1280px;
+  margin: 0 auto 45px;
+  padding: 0 20px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-main);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--bg-color);
+  border-color: var(--primary);
+}
+
+/* =========================================================
+   GRADE DE FROTA / PLANOS EM PÁGINA PRÓPRIA
+   ========================================================= */
+
+.page-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+
+/* =========================================================
+   NAVEGAÇÃO POR ABAS (ARQUIVO ÚNICO)
+   ========================================================= */
+
+.page-view {
+  display: none;
+}
+
+.page-view.active {
+  display: block;
+}
+
+    </style>
+  </head>
+  <body>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navegação Superior -->
+    <nav class="navbar">
+      <div class="logo">RENDA SOBRE <span>RODAS</span></div>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">INÍCIO</a></li>
+          <li><a href="index.html" class="nav-link">FROTA</a></li>
+          <li><a href="planos.html" class="nav-link active">PLANOS</a></li>
+          <li><a href="index.html#contato" class="nav-link btn-nav">SOLICITAR</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar modo claro/escuro">
+          ☀️
+        </button>
+      </div>
+    </nav>
+
+<header class="page-hero">
+      <div class="badge">PLANOS DE LOCAÇÃO</div>
+      <h1>ESCOLHA O PLANO IDEAL PARA VOCÊ</h1>
+      <p>
+        De diárias avulsas a contratos mensais com frota executiva. Compare as opções
+        e escolha o plano que mais combina com sua rotina de trabalho.
+      </p>
+    </header>
+
+    <!-- GRADE DE PLANOS -->
+    <section class="page-section">
+      <div class="planos-grid">
+
+        <!-- PLANO 1: DIÁRIO -->
+        <div class="plano-card">
+          <h3>PLANO DIÁRIO</h3>
+          <div class="plano-price">Sem fidelidade</div>
+          <ul>
+            <li>✓ Ideal para testar a plataforma</li>
+            <li>✓ Veículo Categoria Hatch</li>
+            <li>✓ Seguro Proteção Básica</li>
+            <li>✓ Renovação a qualquer momento</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 2: SEMANAL -->
+        <div class="plano-card">
+          <h3>PLANO SEMANAL</h3>
+          <div class="plano-price">Renovação Semanal</div>
+          <ul>
+            <li>✓ Veículo Categoria Hatch</li>
+            <li>✓ Manutenção Preventiva inclusa</li>
+            <li>✓ Seguro Proteção Básica</li>
+            <li>✓ Suporte em Horário Comercial</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 3: QUINZENAL -->
+        <div class="plano-card">
+          <h3>PLANO QUINZENAL</h3>
+          <div class="plano-price">Renovação a cada 15 dias</div>
+          <ul>
+            <li>✓ Veículos Hatch ou Sedan</li>
+            <li>✓ Manutenção preventiva inclusa</li>
+            <li>✓ Seguro Proteção Intermediária</li>
+            <li>✓ Suporte prioritário</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 4: MENSAL APP (DESTAQUE) -->
+        <div class="plano-card destaque">
+          <div class="badge-plano">MAIS PROCURADO</div>
+          <h3>PLANO MENSAL APP</h3>
+          <div class="plano-price">Contrato Mensal</div>
+          <ul>
+            <li>✓ Veículos Hatch ou Sedan</li>
+            <li>✓ Pacote de KM Expandido</li>
+            <li>✓ Seguro Total com Assistência 24h</li>
+            <li>✓ Carro Reserva em Manutenções Longas</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card active">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 5: ENTREGAS -->
+        <div class="plano-card">
+          <h3>PLANO ENTREGAS</h3>
+          <div class="plano-price">Motos & Furgões</div>
+          <ul>
+            <li>✓ Frota focada em logística</li>
+            <li>✓ Altíssima economia de combustível</li>
+            <li>✓ Manutenção inclusa</li>
+            <li>✓ Ideal para iFood, Loggi e Mercado Livre</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 6: EXECUTIVO BLACK -->
+        <div class="plano-card">
+          <h3>PLANO EXECUTIVO BLACK</h3>
+          <div class="plano-price">Contrato Mensal</div>
+          <ul>
+            <li>✓ Veículos categoria Black / SUV</li>
+            <li>✓ Seguro Total Premium</li>
+            <li>✓ Assistência 24h com prioridade</li>
+            <li>✓ Ideal para Uber Black / Comfort+</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 7: MENSAL PREMIUM -->
+        <div class="plano-card">
+          <h3>PLANO MENSAL PREMIUM</h3>
+          <div class="plano-price">R$ 1.690 <span style="color:var(--text-muted); font-weight:normal;">/ mês</span></div>
+          <ul>
+            <li>✓ Veículos Hatch ou Sedan à sua escolha</li>
+            <li>✓ Contrato mensal com renovação automática</li>
+            <li>✓ Manutenção e seguro total inclusos</li>
+            <li>✓ Prioridade na troca de categoria de veículo</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 8: ANUAL ECONOMIA (DESTAQUE) -->
+        <div class="plano-card destaque">
+          <div class="badge-plano">MAIOR ECONOMIA</div>
+          <h3>PLANO ANUAL ECONOMIA</h3>
+          <div class="plano-price">R$ 17.200 <span style="color:var(--text-muted); font-weight:normal;">/ ano</span></div>
+          <ul>
+            <li>✓ Equivalente a R$ 1.433 por mês (15% de desconto)</li>
+            <li>✓ Valor da mensalidade travado por 12 meses</li>
+            <li>✓ Manutenção, seguro total e assistência 24h</li>
+            <li>✓ Carro reserva garantido em qualquer manutenção</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card active">SOLICITAR</a>
+        </div>
+
+        <!-- PLANO 9: VITALÍCIO -->
+        <div class="plano-card">
+          <h3>PLANO VITALÍCIO CARLOC</h3>
+          <div class="plano-price">Adesão R$ 4.990 + R$ 990 <span style="color:var(--text-muted); font-weight:normal;">/ mês vitalício</span></div>
+          <ul>
+            <li>✓ Mensalidade travada para sempre, sem reajuste</li>
+            <li>✓ Adesão única (pagamento por fora do plano mensal)</li>
+            <li>✓ Prioridade máxima em toda a frota disponível</li>
+            <li>✓ Suporte VIP dedicado e assistência 24h premium</li>
+          </ul>
+          <a href="index.html#contato" class="btn-card">SOLICITAR</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA A COBRANÇA -->
+    <section class="info-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>COMO FUNCIONA A COBRANÇA</h2>
+          <div class="line"></div>
+        </div>
+        <div class="cards-grid-3">
+          <div class="info-card">
+            <h4> SEM TAXA DE ADESÃO</h4>
+            <p>
+              Você paga apenas o valor do plano escolhido, sem surpresas na primeira cobrança.
+            </p>
+          </div>
+          <div class="info-card">
+            <h4> TROCA DE PLANO A QUALQUER MOMENTO</h4>
+            <p>
+              Sua rotina mudou? Fale com a equipe e migre de plano quando precisar.
+            </p>
+          </div>
+          <div class="info-card">
+            <h4> PAGAMENTO FLEXÍVEL</h4>
+            <p>
+              Aceitamos Pix, cartão e boleto, sempre combinados diretamente com a equipe administrativa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="info-section">
+      <div class="container">
+        <div class="contato-container" style="text-align:center;">
+          <h3 style="font-family: var(--font-title); margin-bottom: 15px; letter-spacing: 1px;">
+            FICOU COM DÚVIDAS SOBRE QUAL PLANO ESCOLHER?
+          </h3>
+          <p style="color: var(--text-muted); margin-bottom: 25px;">
+            Fale agora com nossa equipe e receba uma recomendação personalizada.
+          </p>
+          <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
+            <a href="index.html#contato" class="btn-view-all">
+              SOLICITAR ANÁLISE <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a
+              href="https://wa.me/5561984674175?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20plano%20de%20loca%C3%A7%C3%A3o%20CarLoc.%20Pode%20me%20ajudar%20a%20escolher%3F"
+              target="_blank"
+              rel="noopener"
+              class="btn-whatsapp"
+              style="width:auto;"
+            >
+              <i class="fa-brands fa-whatsapp"></i> FALAR NO WHATSAPP
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+<!-- RODAPÉ & CONTATO VIP -->
+    <footer class="footer">
+      <div class="footer-overlay"></div>
+      <div class="footer-container">
+        <!-- Coluna 1: Logo e Marca -->
+        <div class="footer-col brand-col">
+          <div class="logo">Car<span>Loc</span></div>
+          <p class="footer-desc">
+            Soluções em locação para motoristas de aplicativos e entregadores. O impulso que faltava para a sua fonte de renda.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-btn">INSTAGRAM</a>
+            <a href="#" class="social-btn">YOUTUBE</a>
+            <a href="#" class="social-btn">WHATSAPP</a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Links Rápidos -->
+        <div class="footer-col">
+          <h4>NAVEGAÇÃO</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">INÍCIO</a></li>
+            <li><a href="index.html">FROTA COMPLETA</a></li>
+            <li><a href="planos.html">PLANOS DE LOCAÇÃO</a></li>
+            <li><a href="index.html#requisitos">REQUISITOS DE APROVAÇÃO</a></li>
+            <li><a href="index.html#contato">ENVIAR PROPOSTA</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Atendimento e Contato -->
+        <div class="footer-col">
+          <h4>CONTATO VIP</h4>
+          <ul class="footer-info">
+            <li>
+              <i class="fa-solid fa-location-dot contact-icon"></i> Brasília -  Gama
+            </li>
+            <li>
+              <i class="fa-solid fa-phone contact-icon"></i> 0100 150 7300 
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope contact-icon"></i> vip@carloc.com
+            </li>
+            <li>
+              <i class="fa-solid fa-clock contact-icon"></i> Atendimento Privado 24 Horas
+            </li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Newsletter -->
+        <div class="footer-col">
+          <h4>CLUBE EXCLUSIVO</h4>
+          <p class="news-text">
+            Receba novidades sobre novos veículos disponíveis na frota.
+          </p>
+          <form class="footer-form" onsubmit="event.preventDefault()">
+            <input type="email" placeholder="SEU E-MAIL" required />
+            <button type="submit">ENTRAR</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Linha de Direitos Autorais -->
+      <div class="footer-bottom">
+        <p>© 2026 CarLoc Todos os direitos reservados.</p>
+        <div class="legal-links">
+          <a href="#">Termos de Uso</a>
+          <span>|</span>
+          <a href="#">Política de Privacidade</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+/* CANVAS DE PARTÍCULAS INTERATIVAS */
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+const mouse = { x: null, y: null, radius: 150 };
+
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.6;
+    this.speedY = (Math.random() - 0.5) * 0.6;
+    this.density = (Math.random() * 20) + 1;
+  }
+
+  draw() {
+    ctx.fillStyle = 'rgba(180, 180, 180, 0.4)';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+    let dx = mouse.x - this.x;
+    let dy = mouse.y - this.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < mouse.radius) {
+      const forceDirectionX = dx / distance;
+      const forceDirectionY = dy / distance;
+      const force = (mouse.radius - distance) / mouse.radius;
+      const directionX = forceDirectionX * force * this.density;
+      const directionY = forceDirectionY * force * this.density;
+
+      this.x -= directionX;
+      this.y -= directionY;
+    }
+  }
+}
+
+function init() {
+  particles = [];
+  const numberOfParticles = (canvas.width * canvas.height) / 10000;
+  for (let i = 0; i < numberOfParticles; i++) {
+    particles.push(new Particle());
+  }
+}
+init();
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].draw();
+    particles[i].update();
+  }
+  connect();
+  requestAnimationFrame(animate);
+}
+animate();
+
+function connect() {
+  for (let a = 0; a < particles.length; a++) {
+    for (let b = a; b < particles.length; b++) {
+      let dx = particles[a].x - particles[b].x;
+      let dy = particles[a].y - particles[b].y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 110) {
+        let opacity = 1 - (distance / 110);
+        ctx.strokeStyle = `rgba(150, 150, 150, ${opacity * 0.12})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particles[a].x, particles[a].y);
+        ctx.lineTo(particles[b].x, particles[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+/* =========================================================
+   MODO CLARO / ESCURO
+   ========================================================= */
+
+const themeToggle = document.getElementById('theme-toggle');
+
+if (themeToggle) {
+
+    themeToggle.addEventListener('click', () => {
+
+        document.body.classList.toggle('light-mode');
+
+        if (document.body.classList.contains('light-mode')) {
+            themeToggle.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        } else {
+            themeToggle.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+    // Recupera o tema salvo
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.textContent = '🌙';
+    } else {
+        themeToggle.textContent = '☀️';
+    }
+}
+    </script>
+  </body>
+</html>

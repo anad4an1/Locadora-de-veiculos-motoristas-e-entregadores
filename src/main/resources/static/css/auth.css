@@ -1,0 +1,159 @@
+:root {
+  --ink: #101216;
+  --muted: #667085;
+  --line: #e4e7ec;
+  --paper: #f6f7f8;
+  --accent: #101216;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
+}
+
+.auth-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 38px clamp(28px, 6vw, 92px);
+  color: #fff;
+  background: linear-gradient(145deg, #090a0c, #252a31);
+}
+
+.auth-back {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.auth-back:hover { opacity: 1; }
+
+.auth-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.auth-brand span {
+  margin-left: 8px;
+  padding: 4px 7px;
+  color: var(--ink);
+  background: #fff;
+  border-radius: 4px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+}
+
+.auth-copy { max-width: 480px; margin: auto 0; }
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.auth-copy h1 {
+  max-width: 450px;
+  margin: 0 0 18px;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 0.98;
+}
+
+.auth-copy > p:last-child {
+  max-width: 390px;
+  color: #c7cbd1;
+  line-height: 1.65;
+}
+
+.auth-panel {
+  align-self: center;
+  width: min(100% - 48px, 470px);
+  margin: 48px auto;
+  padding: clamp(26px, 5vw, 54px);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 24px 70px rgba(16, 18, 22, 0.08);
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 5px;
+  margin-bottom: 34px;
+  background: var(--paper);
+  border-radius: 10px;
+}
+
+.auth-tab {
+  padding: 11px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-tab.active { color: var(--ink); background: #fff; box-shadow: 0 2px 8px rgba(16, 18, 22, 0.08); }
+
+.form-heading h2 { margin: 0 0 8px; font-family: 'Syne', sans-serif; font-size: 1.75rem; }
+.form-heading p:last-child { margin: 0 0 26px; color: var(--muted); font-size: 0.9rem; }
+
+.auth-form { display: flex; flex-direction: column; }
+.auth-form label { margin: 0 0 7px; font-size: 0.78rem; font-weight: 700; }
+.auth-form input { width: 100%; padding: 13px 14px; margin-bottom: 17px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); font: inherit; outline: none; }
+.auth-form input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(16, 18, 22, 0.08); }
+.auth-submit { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.auth-submit:hover { background: #33373d; }
+.auth-message { min-height: 22px; margin: 18px 0 0; font-size: 0.82rem; font-weight: 600; }
+.auth-message.success { color: #157347; }
+.auth-message.error { color: #b42318; }
+.auth-note { margin: 22px 0 0; color: var(--muted); font-size: 0.7rem; line-height: 1.5; }
+
+.auth-footer {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 22px;
+  color: var(--muted);
+  background: #fff;
+  border-top: 1px solid var(--line);
+  font-size: 0.72rem;
+}
+
+.auth-footer a { color: var(--ink); font-weight: 700; text-decoration: none; }
+.auth-footer a:hover { opacity: 0.6; }
+
+[hidden] { display: none !important; }
+
+@media (max-width: 760px) {
+  .auth-page { display: block; }
+  .auth-intro { min-height: auto; gap: 52px; padding: 26px 22px 42px; }
+  .auth-copy { margin: 0; }
+  .auth-copy h1 { font-size: 2.6rem; }
+  .auth-panel { width: min(100% - 28px, 470px); margin: -18px auto 28px; position: relative; }
+  .auth-footer { flex-wrap: wrap; gap: 10px 18px; }
+}

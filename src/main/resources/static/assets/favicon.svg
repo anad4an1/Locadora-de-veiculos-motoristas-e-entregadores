@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CARLOC favicon">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#dfe7ee"/>
+      <stop offset="70%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#0f1115"/>
+  <circle cx="32" cy="32" r="22" fill="none" stroke="url(#g)" stroke-width="2.5" opacity="0.9"/>
+  <path d="M46 18c-5.3-5.4-14.8-6.4-21.5-2.4-6.1 3.6-9.8 10.8-9.5 18 .3 7.7 4.7 14.7 11.6 18.2 6.9 3.5 15.9 2.5 22.1-3.1l-4.8-4.3c-3.7 3.7-9.4 4.8-14.4 2.5-5-2.3-8.2-7.2-8.1-12.7.1-5.5 3.4-10.6 8.3-12.7 5.2-2.3 11.3-1.4 15.8 2.5l5.5-5.3Z" fill="url(#g)"/>
+  <circle cx="32" cy="32" r="8" fill="#0f1115"/>
+</svg>
