@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>CARLOC | Acesso administrativo</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/admin-auth.css" />
+</head>
+<body>
+  <main class="auth-page admin-auth-page">
+    <section class="auth-intro admin-intro">
+      <a class="auth-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar para o site</a>
+      <div class="auth-brand">CARLOC <span>ADMIN</span></div>
+      <div class="auth-copy">
+        <p class="eyebrow">ÁREA RESTRITA</p>
+        <h1>Controle da operação.</h1>
+        <p>Entre com as credenciais administrativas para acessar o sistema.</p>
+      </div>
+    </section>
+
+    <section class="auth-panel admin-auth-panel" aria-labelledby="admin-title">
+      <div class="admin-mark" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+      <form class="auth-form" id="admin-login-form">
+        <div class="form-heading">
+          <p class="eyebrow">AUTENTICAÇÃO ADMINISTRATIVA</p>
+          <h2 id="admin-title">Entrar como admin</h2>
+          <p>Use sua conta de administrador do sistema.</p>
+        </div>
+        <label for="admin-email">E-mail administrativo</label>
+        <input id="admin-email" name="email" type="email" autocomplete="username" placeholder="admin@empresa.com" required />
+        <label for="admin-password">Senha</label>
+        <input id="admin-password" name="senha" type="password" autocomplete="current-password" placeholder="Sua senha" required />
+        <button class="auth-submit" id="admin-submit" type="submit">Acessar sistema <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+      <p class="auth-message" id="admin-message" role="status" aria-live="polite"></p>
+      <p class="auth-note"><i class="fa-solid fa-lock"></i> Acesso verificado pelo servidor.</p>
+    </section>
+  </main>
+  <footer class="auth-footer admin-footer">
+    <span>© 2026 CARLOC. Área administrativa.</span>
+    <a href="auth.html">Acesso de clientes</a>
+    <a href="index.html">Voltar ao início</a>
+  </footer>
+  <script src="js/admin-auth.js"></script>
+</body>
+</html>
