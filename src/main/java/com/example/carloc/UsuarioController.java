@@ -84,6 +84,41 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
+    @PostMapping("/admin/login")
+    public ResponseEntity<?> loginAdmin(@RequestBody LoginRequest dados) {
+
+        if (dados.getEmail() == null || dados.getSenha() == null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body("E-mail e senha são obrigatórios.");
+        }
+
+        String email = dados.getEmail().trim().toLowerCase();
+
+        Optional<Usuario> resultado =
+                usuarioRepository.findByEmail(email);
+
+        if (resultado.isEmpty()) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body("E-mail ou senha incorretos.");
+        }
+
+        Usuario usuario = resultado.get();
+
+        if (!usuario.getSenha().equals(dados.getSenha())) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body("E-mail ou senha incorretos.");
+        }
+
+        // Por enquanto, valida as credenciais.
+        // A verificação de permissão de administrador
+        // precisa ser implementada separadamente.
+
+        return ResponseEntity.ok("Credenciais validadas.");
+    }
+    
     public static class LoginRequest {
 
         private String email;
