@@ -1,50 +1,38 @@
-const adminForm = document.querySelector('#admin-login-form');
-const adminMessage = document.querySelector('#admin-message');
-const adminSubmit = document.querySelector('#admin-submit');
-const apiBase = window.location.port === '5500'
-  ? 'http://localhost:8080'
-  : window.location.origin;
+// "" = site e API no mesmo endereço (Spring servindo o site).
+const API = "";
 
-const showMessage = (text, type) => {
-  adminMessage.textContent = text;
-  adminMessage.className = `auth-message ${type}`;
-};
+const form = document.getElementById("admin-login-form");
+const mensagem = document.getElementById("admin-message");
+const botao = document.getElementById("admin-submit");
 
-adminForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  adminSubmit.disabled = true;
-  showMessage('Verificando credenciais...', '');
+form.addEventListener("submit", async (evento) => {
+  evento.preventDefault();
+  mensagem.textContent = "";
+
+  const email = document.getElementById("admin-email").value.trim();
+  const senha = document.getElementById("admin-password").value;
+
+  botao.disabled = true;
+  mensagem.textContent = "Verificando... se o servidor estava parado, pode levar até 1 minuto.";
 
   try {
-    const response = await fetch(`${apiBase}/usuarios/admin/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: adminForm.email.value.trim(),
-        senha: adminForm.senha.value,
-      }),
+    const resposta = await fetch(API + "/usuarios/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, senha })
     });
 
-    const body = await response.text();
-    let result;
-    try {
-      result = JSON.parse(body);
-    } catch {
-      result = body;
-    }
-    if (!response.ok) {
-      const message = typeof result === 'string'
-        ? result
-        : 'Não foi possível validar o acesso administrativo.';
-      showMessage(message, 'error');
+    if (!resposta.ok) {
+      mensagem.textContent = await resposta.text();
       return;
     }
 
-    showMessage('Acesso administrativo autorizado.', 'success');
-    adminForm.reset();
-  } catch {
-    showMessage('Não foi possível conectar ao servidor. Tente novamente.', 'error');
+    sessionStorage.setItem("adminEmail", email);
+    sessionStorage.setItem("adminSenha", senha);
+    window.location.href = "admin-painel.html";
+  } catch (erro) {
+    mensagem.textContent = "Não foi possível conectar ao servidor. Tente novamente em instantes.";
   } finally {
-    adminSubmit.disabled = false;
+    botao.disabled = false;
   }
 });

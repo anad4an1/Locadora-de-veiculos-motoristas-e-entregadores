@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>CARLOC | Painel administrativo</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; font-family: "Space Grotesk", Arial, sans-serif; background: #0e0e10; color: #f2f2f2; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #2a2a2e; }
+    .marca { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.3rem; }
+    main { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+    .cartao { background: #17171a; border: 1px solid #2a2a2e; border-radius: 10px; padding: 20px; margin-bottom: 20px; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #2a2a2e; }
+    button { padding: 10px 18px; background: #f2f2f2; color: #0e0e10; border: 0; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .aviso { color: #ff8a8a; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="marca">CARLOC <span>ADMIN</span></div>
+    <button id="btn-sair" type="button">Sair</button>
+  </header>
+
+  <main>
+    <p class="aviso" id="aviso"></p>
+
+    <section class="cartao">
+      <h2>Usuários cadastrados</h2>
+      <table>
+        <thead><tr><th>ID</th><th>E-mail</th><th>Telefone</th><th>Admin</th></tr></thead>
+        <tbody id="tabela-usuarios"></tbody>
+      </table>
+    </section>
+
+    <section class="cartao">
+      <h2>Clientes</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th></tr></thead>
+        <tbody id="tabela-clientes"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    // Use "" quando o site e a API estão no mesmo endereço.
+    const API = "";
+
+    const email = sessionStorage.getItem("adminEmail");
+    const senha = sessionStorage.getItem("adminSenha");
+
+    // Sem login, volta para a página de acesso (troque pelo nome real do seu arquivo de login).
+    if (!email || !senha) {
+      window.location.href = "admin-login.html";
+    }
+
+    function sair() {
+      sessionStorage.removeItem("adminEmail");
+      sessionStorage.removeItem("adminSenha");
+      window.location.href = "admin-login.html";
+    }
+    document.getElementById("btn-sair").addEventListener("click", sair);
+
+    function preencher(idTabela, linhas) {
+      const corpo = document.getElementById(idTabela);
+      corpo.innerHTML = "";
+      linhas.forEach((valores) => {
+        const tr = document.createElement("tr");
+        valores.forEach((v) => {
+          const td = document.createElement("td");
+          td.textContent = v ?? "";
+          tr.appendChild(td);
+        });
+        corpo.appendChild(tr);
+      });
+    }
+
+    async function carregar() {
+      const cabecalhos = { "X-Admin-Email": email, "X-Admin-Senha": senha };
+      try {
+        const [rUsuarios, rClientes] = await Promise.all([
+          fetch(API + "/admin/usuarios", { headers: cabecalhos }),
+          fetch(API + "/admin/clientes", { headers: cabecalhos })
+        ]);
+
+        if (rUsuarios.status === 403 || rClientes.status === 403) {
+          sair();
+          return;
+        }
+        if (!rUsuarios.ok || !rClientes.ok) {
+          throw new Error("falha");
+        }
+
+        const usuarios = await rUsuarios.json();
+        const clientes = await rClientes.json();
+
+        preencher("tabela-usuarios",
+          usuarios.map((u) => [u.id, u.email, u.telefone, u.admin ? "Sim" : "Não"]));
+        preencher("tabela-clientes",
+          clientes.map((c) => [c.id, c.nome, c.cpf, c.telefone, c.email]));
+      } catch (e) {
+        document.getElementById("aviso").textContent =
+          "Não foi possível carregar os dados. Tente recarregar a página.";
+      }
+    }
+
+    carregar();
+  </script>
+</body>
+</html>
