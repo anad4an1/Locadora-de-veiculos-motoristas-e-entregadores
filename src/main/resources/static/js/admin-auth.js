@@ -1,5 +1,6 @@
 // "" = site e API no mesmo endereço (Spring servindo o site).
-const API = "";
+const API = API_URL;
+
 
 const form = document.getElementById("admin-login-form");
 const mensagem = document.getElementById("admin-message");

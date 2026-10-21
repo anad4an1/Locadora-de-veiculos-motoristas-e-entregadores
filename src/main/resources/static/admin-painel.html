@@ -44,10 +44,10 @@
       </table>
     </section>
   </main>
-
-  <script>
+  <script src="js/config.js"></script>
+  <script> 
     // Use "" quando o site e a API estão no mesmo endereço.
-    const API = "";
+    const API = API_URL;
 
     const email = sessionStorage.getItem("adminEmail");
     const senha = sessionStorage.getItem("adminSenha");
@@ -108,6 +108,7 @@
     }
 
     carregar();
+    
   </script>
 </body>
 </html>
