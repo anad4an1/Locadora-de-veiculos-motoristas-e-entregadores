@@ -21,7 +21,7 @@
 |---|---|
 | **Instituição** | UNICEPLAC |
 | **Curso** | Análise e Desenvolvimento de Sistemas |
-| **Disciplina** | A definir pela equipe |
+| **Disciplina** | Projeto Integrado em Programação Web |
 | **Orientador** | Profº Hudson Neves |
 | **Projeto** | CarLoc |
 | **Status** | 🟡 Em desenvolvimento |
