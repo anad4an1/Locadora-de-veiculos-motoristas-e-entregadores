@@ -265,7 +265,10 @@ Construído com HTML, CSS e JavaScript no frontend e Java com Spring Boot no bac
 ### 🔗 Repositório
 
 [github.com/anad4an1/Locadora-de-veiculos-motoristas-e-entregadores](https://github.com/anad4an1/Locadora-de-veiculos-motoristas-e-entregadores)
-
 https://anad4an1.github.io/Locadora-de-veiculos-motoristas-e-entregadores/
+
+### Protótipo - Média Fidelidade
+
+https://www.figma.com/proto/44FVIqFO0lOruNrOKRFtgd/Prot%C3%B3tipo-M%C3%A9dia-fidelidade?node-id=1-11&p=f&t=6RcX8Xv3gLNV7tt5-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1
 
 </div>
